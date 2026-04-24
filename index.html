@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TerraTime | Land Intelligence</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@300;500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00e5ff;
+            --primary-glow: rgba(0, 229, 255, 0.4);
+            --bg-dark: #05080f;
+            --glass-bg: rgba(10, 15, 28, 0.75);
+            --glass-border: rgba(0, 229, 255, 0.2);
+            --text-main: #e0e6ed;
+            --text-dim: rgba(224, 230, 237, 0.6);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 1;
+        }
+
+        /* Glassmorphism UI Components */
+        .ui-overlay {
+            position: absolute;
+            z-index: 1000;
+            pointer-events: none;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 24px;
+        }
+
+        .glass-panel {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            pointer-events: auto;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+        }
+
+        /* Top Bar / Search */
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 24px;
+        }
+
+        .brand h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--primary);
+            text-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        .search-container {
+            position: relative;
+            width: 400px;
+        }
+
+        .search-container input {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 12px 16px 12px 48px;
+            color: white;
+            font-size: 15px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-container input:focus {
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 15px var(--primary-glow);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary);
+            font-size: 18px;
+        }
+
+        /* Status Panel */
+        .status-panel {
+            position: absolute;
+            top: 100px;
+            right: 24px;
+            width: 280px;
+            padding: 20px;
+        }
+
+        .status-panel h3 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-dim);
+            margin-bottom: 12px;
+        }
+
+        .location-info {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+        }
+
+        .info-label {
+            color: var(--text-dim);
+        }
+
+        .info-value {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* Timeline Slider */
+        .timeline-container {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            padding: 20px 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 1000;
+            pointer-events: auto;
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .timeline-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-dim);
+        }
+
+        .current-year {
+            font-family: 'Outfit', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary);
+            text-shadow: 0 0 15px var(--primary-glow);
+        }
+
+        .year-slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .year-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            cursor: pointer;
+            border-radius: 50%;
+            border: 3px solid var(--bg-dark);
+            box-shadow: 0 0 10px var(--primary);
+            transition: transform 0.2s;
+        }
+
+        .year-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+        }
+
+        /* Loader */
+        #loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-dark);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 20px;
+            transition: opacity 0.5s ease;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(0, 229, 255, 0.1);
+            border-top: 3px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .loading-text {
+            font-family: 'Outfit', sans-serif;
+            font-size: 18px;
+            letter-spacing: 4px;
+            color: var(--primary);
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 0.5;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* Leaflet Overrides */
+        .leaflet-control-zoom {
+            border: none !important;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5) !important;
+        }
+
+        .leaflet-control-zoom-in,
+        .leaflet-control-zoom-out {
+            background: var(--glass-bg) !important;
+            backdrop-filter: blur(8px) !important;
+            color: var(--primary) !important;
+            border: 1px solid var(--glass-border) !important;
+        }
+
+        .leaflet-control-attribution {
+            background: rgba(0, 0, 0, 0.5) !important;
+            color: var(--text-dim) !important;
+        }
+
+        /* Toggle Switch Styling */
+        .layer-control {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .toggle-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 40px;
+            height: 20px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255, 255, 255, 0.1);
+            transition: .4s;
+            border-radius: 20px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 14px;
+            width: 14px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked+.slider {
+            background-color: var(--primary);
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(20px);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="loader">
+        <div class="spinner"></div>
+        <div class="loading-text">TERRATIME</div>
+    </div>
+
+    <div id="map"></div>
+
+    <div class="ui-overlay">
+        <div class="top-bar">
+            <div class="brand glass-panel">
+                <h1>TERRATIME</h1>
+            </div>
+
+            <div class="search-container glass-panel">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="location-search" placeholder="Search any place in the world..." />
+            </div>
+
+            <div style="width: 200px;"></div> <!-- Spacer -->
+        </div>
+
+        <div class="status-panel glass-panel">
+            <h3>Intelligence Node</h3>
+            <div class="location-info">
+                <div class="info-item">
+                    <span class="info-label">Active Region</span>
+                    <span class="info-value" id="val-location">Delhi, India</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Data Source</span>
+                    <span class="info-value">Sentinel-2 SR</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Coordinates</span>
+                    <span class="info-value" id="val-coords">28.61, 77.21</span>
+                </div>
+            </div>
+
+            <div class="layer-control">
+                <div class="toggle-item">
+                    <span style="font-size: 13px; color: var(--text-dim);">Hybrid Labels</span>
+                    <label class="switch">
+                        <input type="checkbox" id="label-toggle" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+
+            <div style="margin-top: 10px;">
+                <p style="font-size: 12px; color: var(--text-dim); line-height: 1.4;">
+                    Base layer: Sentinel-2 Composite<br>
+                    Status: <span id="status-text" style="color: #00e5ff;">Initializing...</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- Timeline Slider -->
+        <div class="timeline-container glass-panel">
+            <div class="timeline-header">
+                <span class="timeline-label">Temporal Axis</span>
+                <span class="current-year" id="year-display">2023</span>
+            </div>
+            <input type="range" min="2017" max="2024" value="2023" class="year-slider" id="year-slider">
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        let map;
+        let satelliteLayer;
+        let labelsLayer;
+        let currentYear = 2023;
+        let currentLat = 28.6139;
+        let currentLng = 77.2090;
+
+        // Initialize Map
+        function initMap() {
+            try {
+                map = L.map('map', {
+                    center: [currentLat, currentLng],
+                    zoom: 12,
+                    zoomControl: false
+                });
+
+                L.control.zoom({ position: 'bottomright' }).addTo(map);
+
+                L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+                    attribution: '&copy; CartoDB'
+                }).addTo(map);
+
+                // Add Transparent Road/Label Layer
+                labelsLayer = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}{r}.png', {
+                    pane: 'markerPane', // Ensures labels are ALWAYS on top of satellite
+                    zIndex: 1000
+                }).addTo(map);
+
+                // Start loading satellite tiles after map is ready
+                setTimeout(() => {
+                    updateSatelliteLayer();
+                }, 100);
+
+            } catch (err) {
+                console.error("Map Init Error:", err);
+            } finally {
+                // Always hide loader regardless of errors
+                setTimeout(() => {
+                    const loader = document.getElementById('loader');
+                    if (loader) {
+                        loader.style.opacity = '0';
+                        setTimeout(() => { loader.style.display = 'none'; }, 500);
+                    }
+                }, 1500);
+            }
+        }
+
+        let lastFetchBounds = null;
+        let lastFetchZoom = null;
+        let lastFetchYear = null;
+        let isFetching = false;
+
+        async function updateSatelliteLayer() {
+            if (isFetching) return; // Prevent overlapping requests
+
+            const currentBounds = map.getBounds();
+            const currentZoom = map.getZoom();
+
+            // Check if we are inside the existing 1200km buffer
+            if (lastFetchBounds && lastFetchZoom === currentZoom && lastFetchYear === currentYear) {
+                if (lastFetchBounds.contains(currentBounds)) {
+                    console.log("%c[TerraTime] Within 1200km buffer - skipping fetch.", "color: #00e5ff;");
+                    return;
+                }
+            }
+
+            const statusText = document.getElementById('status-text');
+            if (statusText) {
+                statusText.innerText = "Fetching GEE Tiles...";
+                statusText.style.color = "#00e5ff";
+            }
+
+            if (!map) return;
+
+            // Get current viewport bounds
+            const bounds = map.getBounds();
+            const center = map.getCenter();
+            const west = bounds.getWest();
+            const south = bounds.getSouth();
+            const east = bounds.getEast();
+            const north = bounds.getNorth();
+
+            // Dynamically update Intelligence Node UI
+            document.getElementById('val-coords').innerText = `${center.lat.toFixed(2)}, ${center.lng.toFixed(2)}`;
+            document.getElementById('val-location').innerText = "Scanning Location...";
+            
+            // Reverse Geocode to get the city name
+            fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${center.lat}&lon=${center.lng}&zoom=10`)
+                .then(res => res.json())
+                .then(data => {
+                    if (data && data.address) {
+                        let city = data.address.city || data.address.town || data.address.state || "Unknown Region";
+                        let country = data.address.country || "";
+                        document.getElementById('val-location').innerText = `${city}${country ? ', ' + country : ''}`;
+                    } else {
+                        document.getElementById('val-location').innerText = "Remote Region";
+                    }
+                }).catch(() => {
+                    document.getElementById('val-location').innerText = "Unknown Location";
+                });
+
+            // If we are zoomed out (Global Mode), set a massive buffer so we never fetch again
+            if (currentZoom < 7) {
+                const p1 = L.latLng(85, 180);
+                const p2 = L.latLng(-85, -180);
+                lastFetchBounds = L.latLngBounds(p1, p2);
+            } else {
+                // Buffer of +/- 5 degrees is roughly an 1100km box.
+                // This stops the frontend from asking for new data every time you move the mouse slightly.
+                const p1 = L.latLng(center.lat + 5, center.lng + 5); 
+                const p2 = L.latLng(center.lat - 5, center.lng - 5);
+                lastFetchBounds = L.latLngBounds(p1, p2);
+            }
+            lastFetchZoom = currentZoom;
+            lastFetchYear = currentYear;
+            isFetching = true;
+
+            try {
+                const url = `/api/tile-url?west=${west}&south=${south}&east=${east}&north=${north}&year=${currentYear}`;
+                const response = await fetch(url);
+
+                if (!response.ok) throw new Error("API Offline");
+
+                const data = await response.json();
+
+                if (data.url) {
+                    if (satelliteLayer) {
+                        // Use the official Leaflet method for seamless updates
+                        satelliteLayer.setUrl(data.url);
+                    } else {
+                        satelliteLayer = L.tileLayer(data.url, {
+                            attribution: 'Google Earth Engine',
+                            keepBuffer: 0,
+                            updateWhenIdle: true,
+                            updateWhenZooming: false,
+                            errorTileUrl: 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' // Instantly hides broken image icon
+                        }).addTo(map);
+
+                        // Automatic Tile Retry System
+                        satelliteLayer.on('tileerror', function(e) {
+                            let tile = e.tile;
+                            let retries = parseInt(tile.getAttribute('data-retry') || '0', 10);
+                            
+                            // Retry up to 3 times
+                            if (retries < 3) {
+                                setTimeout(() => {
+                                    tile.setAttribute('data-retry', retries + 1);
+                                    console.warn(`[TerraTime] Retrying failed tile (Attempt ${retries + 1})...`);
+                                    
+                                    // Mathematically reconstruct the pristine original URL using the tile coordinates
+                                    let originalSrc = L.Util.template(data.url, e.coords);
+                                    
+                                    // Trigger the retry
+                                    tile.src = originalSrc;
+                                }, 1500 * (retries + 1)); // Waits 1.5s, then 3s, then 4.5s
+                            }
+                        });
+                    }
+
+                    if (statusText) statusText.innerHTML = '<span style="color: #00ff88;">Stable Connection</span>';
+                } else {
+                    if (statusText) statusText.innerHTML = '<span style="color: #ffcc00;">No Data for this Year</span>';
+                }
+            } catch (err) {
+                console.error("Error fetching tiles:", err);
+                if (statusText) statusText.innerHTML = '<span style="color: #ff4444;">API Error - Check Port 5000</span>';
+            } finally {
+                isFetching = false;
+            }
+        }
+
+        // Auto-update when panning or zooming
+        let moveTimeout;
+        window.onload = () => {
+            initMap();
+
+            map.on('moveend', () => {
+                clearTimeout(moveTimeout);
+                moveTimeout = setTimeout(() => {
+                    updateSatelliteLayer();
+                }, 800);
+            });
+        };
+
+        // Timeline Slider Logic
+        const yearSlider = document.getElementById('year-slider');
+        const yearDisplay = document.getElementById('year-display');
+
+        yearSlider.addEventListener('input', (e) => {
+            currentYear = e.target.value;
+            yearDisplay.innerText = currentYear;
+        });
+
+        yearSlider.addEventListener('change', () => {
+            updateSatelliteLayer();
+        });
+
+        // Label Toggle Logic
+        document.getElementById('label-toggle').addEventListener('change', (e) => {
+            if (e.target.checked) {
+                map.addLayer(labelsLayer);
+            } else {
+                map.removeLayer(labelsLayer);
+            }
+        });
+
+        // Search Functionality
+        const searchInput = document.getElementById('location-search');
+        searchInput.addEventListener('keypress', async (e) => {
+            if (e.key === 'Enter') {
+                const query = searchInput.value;
+                if (!query) return;
+
+                try {
+                    const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${query}`);
+                    const results = await response.json();
+
+                    if (results.length > 0) {
+                        const { lat, lon, display_name } = results[0];
+                        currentLat = parseFloat(lat);
+                        currentLng = parseFloat(lon);
+
+                        map.setView([currentLat, currentLng], 12);
+                        document.getElementById('val-location').innerText = display_name.split(',')[0];
+                        document.getElementById('val-coords').innerText = `${currentLat.toFixed(2)}, ${currentLng.toFixed(2)}`;
+                        updateSatelliteLayer();
+                    }
+                } catch (err) {
+                    console.error("Geocoding error:", err);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
