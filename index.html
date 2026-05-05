@@ -1,667 +1,583 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TerraTime | Land Intelligence</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@300;500;700&display=swap"
-        rel="stylesheet">
-    <style>
-        :root {
-            --primary: #00e5ff;
-            --primary-glow: rgba(0, 229, 255, 0.4);
-            --bg-dark: #05080f;
-            --glass-bg: rgba(10, 15, 28, 0.75);
-            --glass-border: rgba(0, 229, 255, 0.2);
-            --text-main: #e0e6ed;
-            --text-dim: rgba(224, 230, 237, 0.6);
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TerraTime | Land Growth Intelligence</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #00e5ff;
+      --primary-glow: rgba(0,229,255,0.35);
+      --accent: #7c3aed;
+      --green: #00ff88;
+      --red: #ff4466;
+      --yellow: #ffd600;
+      --bg: #05080f;
+      --glass: rgba(8,14,28,0.82);
+      --border: rgba(0,229,255,0.18);
+      --text: #e0e6ed;
+      --dim: rgba(224,230,237,0.5);
+    }
+    * { margin:0; padding:0; box-sizing:border-box; font-family:'Inter',sans-serif; }
+    body { background:var(--bg); color:var(--text); overflow:hidden; height:100vh; }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-        }
+    #map { position:absolute; inset:0; z-index:1; }
 
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            overflow: hidden;
-            height: 100vh;
-        }
+    /* ── Loader ── */
+    #loader {
+      position:fixed; inset:0; background:var(--bg); z-index:9999;
+      display:flex; flex-direction:column; align-items:center; justify-content:center; gap:18px;
+      transition:opacity 0.6s;
+    }
+    .spinner { width:48px; height:48px; border:3px solid rgba(0,229,255,0.1); border-top-color:var(--primary); border-radius:50%; animation:spin 1s linear infinite; }
+    .loader-title { font-family:'Outfit',sans-serif; font-size:22px; letter-spacing:5px; color:var(--primary); text-shadow:0 0 20px var(--primary-glow); animation:pulse 1.5s ease-in-out infinite; }
+    .loader-sub { font-size:12px; color:var(--dim); letter-spacing:2px; }
+    @keyframes spin { to { transform:rotate(360deg); } }
+    @keyframes pulse { 0%,100%{opacity:.5} 50%{opacity:1} }
 
-        #map {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            z-index: 1;
-        }
+    /* ── Glass panel ── */
+    .glass {
+      background:var(--glass); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px);
+      border:1px solid var(--border); border-radius:16px;
+      box-shadow:0 8px 32px rgba(0,0,0,0.7);
+    }
 
-        /* Glassmorphism UI Components */
-        .ui-overlay {
-            position: absolute;
-            z-index: 1000;
-            pointer-events: none;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            padding: 24px;
-        }
+    /* ── Top bar ── */
+    #topbar {
+      position:absolute; top:20px; left:20px; right:20px; z-index:1000;
+      display:flex; gap:12px; align-items:center; pointer-events:none;
+    }
+    .brand {
+      pointer-events:auto; padding:12px 22px; display:flex; align-items:center; gap:10px; white-space:nowrap;
+    }
+    .brand-dot { width:10px; height:10px; border-radius:50%; background:var(--primary); box-shadow:0 0 10px var(--primary); animation:pulse 2s ease-in-out infinite; }
+    .brand h1 { font-family:'Outfit',sans-serif; font-size:20px; font-weight:700; letter-spacing:3px; color:var(--primary); text-shadow:0 0 12px var(--primary-glow); }
 
-        .glass-panel {
-            background: var(--glass-bg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            pointer-events: auto;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
-        }
+    #search-wrap { flex:1; max-width:420px; pointer-events:auto; position:relative; }
+    #search-wrap input {
+      width:100%; padding:12px 16px 12px 44px; background:rgba(255,255,255,0.05);
+      border:1px solid var(--border); border-radius:12px; color:#fff; font-size:14px; outline:none;
+      transition:all .3s;
+    }
+    #search-wrap input:focus { border-color:var(--primary); background:rgba(255,255,255,0.09); box-shadow:0 0 16px var(--primary-glow); }
+    #search-wrap .si { position:absolute; left:14px; top:50%; transform:translateY(-50%); color:var(--primary); font-size:16px; }
 
-        /* Top Bar / Search */
-        .top-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+    /* ── Right panel ── */
+    #right-panel {
+      position:absolute; top:84px; right:20px; width:270px; z-index:1000;
+      display:flex; flex-direction:column; gap:12px;
+    }
 
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px 24px;
-        }
+    .panel-section { padding:16px 18px; }
+    .panel-title { font-size:10px; text-transform:uppercase; letter-spacing:2px; color:var(--dim); margin-bottom:12px; }
 
-        .brand h1 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 22px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            color: var(--primary);
-            text-shadow: 0 0 10px var(--primary-glow);
-        }
+    .stat-row { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; font-size:13px; }
+    .stat-label { color:var(--dim); }
+    .stat-val { font-weight:600; color:#fff; }
 
-        .search-container {
-            position: relative;
-            width: 400px;
-        }
+    .source-badge {
+      display:inline-block; padding:2px 8px; border-radius:20px; font-size:10px; font-weight:600;
+      background:rgba(0,229,255,0.15); color:var(--primary); border:1px solid rgba(0,229,255,0.3);
+    }
+    .source-badge.local { background:rgba(0,255,136,0.15); color:var(--green); border-color:rgba(0,255,136,0.3); }
+    .source-badge.live  { background:rgba(255,214,0,0.15); color:var(--yellow); border-color:rgba(255,214,0,0.3); }
 
-        .search-container input {
-            width: 100%;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--glass-border);
-            border-radius: 12px;
-            padding: 12px 16px 12px 48px;
-            color: white;
-            font-size: 15px;
-            outline: none;
-            transition: all 0.3s ease;
-        }
+    /* Layer toggles */
+    .layer-row { display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; }
+    .layer-name { font-size:13px; display:flex; align-items:center; gap:8px; }
+    .layer-dot { width:8px; height:8px; border-radius:50%; }
 
-        .search-container input:focus {
-            border-color: var(--primary);
-            background: rgba(255, 255, 255, 0.1);
-            box-shadow: 0 0 15px var(--primary-glow);
-        }
+    .switch { position:relative; width:38px; height:20px; display:inline-block; }
+    .switch input { opacity:0; width:0; height:0; }
+    .sslider {
+      position:absolute; inset:0; background:rgba(255,255,255,0.1); border-radius:20px;
+      cursor:pointer; transition:.3s;
+    }
+    .sslider:before {
+      content:""; position:absolute; width:14px; height:14px; left:3px; bottom:3px;
+      background:#fff; border-radius:50%; transition:.3s;
+    }
+    input:checked + .sslider { background:var(--primary); }
+    input:checked + .sslider:before { transform:translateX(18px); }
 
-        .search-icon {
-            position: absolute;
-            left: 16px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--primary);
-            font-size: 18px;
-        }
+    /* Status */
+    #status-dot { width:8px; height:8px; border-radius:50%; background:var(--yellow); display:inline-block; margin-right:6px; transition:background .5s; }
+    #status-dot.ok { background:var(--green); box-shadow:0 0 8px var(--green); }
+    #status-dot.err { background:var(--red); }
 
-        /* Status Panel */
-        .status-panel {
-            position: absolute;
-            top: 100px;
-            right: 24px;
-            width: 280px;
-            padding: 20px;
-        }
+    /* ── Timeline ── */
+    #timeline {
+      position:absolute; bottom:30px; left:50%; transform:translateX(-50%);
+      width:min(640px, calc(100vw - 260px)); z-index:1000; padding:18px 32px;
+    }
+    .tl-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; }
+    .tl-label { font-size:10px; text-transform:uppercase; letter-spacing:2px; color:var(--dim); }
+    #year-display { font-family:'Outfit',sans-serif; font-size:32px; font-weight:700; color:var(--primary); text-shadow:0 0 18px var(--primary-glow); }
 
-        .status-panel h3 {
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-dim);
-            margin-bottom: 12px;
-        }
+    /* Year tick marks */
+    .tl-ticks { display:flex; justify-content:space-between; margin-bottom:6px; }
+    .tick { font-size:10px; color:var(--dim); }
 
-        .location-info {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
+    input[type=range] {
+      -webkit-appearance:none; width:100%; height:4px;
+      background:linear-gradient(to right, var(--primary) 0%, rgba(255,255,255,0.1) 0%);
+      border-radius:5px; outline:none; cursor:pointer;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance:none; width:22px; height:22px; border-radius:50%;
+      background:var(--primary); border:3px solid var(--bg);
+      box-shadow:0 0 12px var(--primary); cursor:pointer; transition:transform .2s;
+    }
+    input[type=range]::-webkit-slider-thumb:hover { transform:scale(1.2); }
 
-        .info-item {
-            display: flex;
-            justify-content: space-between;
-            font-size: 14px;
-        }
+    /* Data source badge */
+    #data-source-info {
+      position:absolute; bottom:110px; left:50%; transform:translateX(-50%);
+      z-index:1000; display:flex; gap:10px;
+    }
+    .ds-badge {
+      padding:6px 14px; border-radius:20px; font-size:11px; font-weight:600;
+      background:var(--glass); border:1px solid var(--border); backdrop-filter:blur(10px);
+      display:flex; align-items:center; gap:6px; cursor:default;
+    }
+    .ds-badge .dot { width:7px; height:7px; border-radius:50%; }
 
-        .info-label {
-            color: var(--text-dim);
-        }
+    /* Leaflet overrides */
+    .leaflet-control-zoom { border:none !important; }
+    .leaflet-control-zoom-in, .leaflet-control-zoom-out {
+      background:var(--glass) !important; color:var(--primary) !important;
+      border:1px solid var(--border) !important; backdrop-filter:blur(8px) !important;
+    }
+    .leaflet-control-attribution { background:rgba(0,0,0,0.5) !important; color:var(--dim) !important; }
 
-        .info-value {
-            color: #fff;
-            font-weight: 600;
-        }
-
-        /* Timeline Slider */
-        .timeline-container {
-            position: absolute;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 600px;
-            padding: 20px 40px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            z-index: 1000;
-            pointer-events: auto;
-        }
-
-        .timeline-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .timeline-label {
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--text-dim);
-        }
-
-        .current-year {
-            font-family: 'Outfit', sans-serif;
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--primary);
-            text-shadow: 0 0 15px var(--primary-glow);
-        }
-
-        .year-slider {
-            -webkit-appearance: none;
-            width: 100%;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 5px;
-            outline: none;
-        }
-
-        .year-slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 20px;
-            height: 20px;
-            background: var(--primary);
-            cursor: pointer;
-            border-radius: 50%;
-            border: 3px solid var(--bg-dark);
-            box-shadow: 0 0 10px var(--primary);
-            transition: transform 0.2s;
-        }
-
-        .year-slider::-webkit-slider-thumb:hover {
-            transform: scale(1.2);
-        }
-
-        /* Loader */
-        #loader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--bg-dark);
-            z-index: 9999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            gap: 20px;
-            transition: opacity 0.5s ease;
-        }
-
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 3px solid rgba(0, 229, 255, 0.1);
-            border-top: 3px solid var(--primary);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        .loading-text {
-            font-family: 'Outfit', sans-serif;
-            font-size: 18px;
-            letter-spacing: 4px;
-            color: var(--primary);
-            animation: pulse 1.5s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-
-            0%,
-            100% {
-                opacity: 0.5;
-            }
-
-            50% {
-                opacity: 1;
-            }
-        }
-
-        /* Leaflet Overrides */
-        .leaflet-control-zoom {
-            border: none !important;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5) !important;
-        }
-
-        .leaflet-control-zoom-in,
-        .leaflet-control-zoom-out {
-            background: var(--glass-bg) !important;
-            backdrop-filter: blur(8px) !important;
-            color: var(--primary) !important;
-            border: 1px solid var(--glass-border) !important;
-        }
-
-        .leaflet-control-attribution {
-            background: rgba(0, 0, 0, 0.5) !important;
-            color: var(--text-dim) !important;
-        }
-
-        /* Toggle Switch Styling */
-        .layer-control {
-            margin-top: 20px;
-            padding-top: 15px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .toggle-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 40px;
-            height: 20px;
-        }
-
-        .switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(255, 255, 255, 0.1);
-            transition: .4s;
-            border-radius: 20px;
-        }
-
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 14px;
-            width: 14px;
-            left: 3px;
-            bottom: 3px;
-            background-color: white;
-            transition: .4s;
-            border-radius: 50%;
-        }
-
-        input:checked+.slider {
-            background-color: var(--primary);
-        }
-
-        input:checked+.slider:before {
-            transform: translateX(20px);
-        }
-    </style>
+    /* DW legend */
+    #dw-legend {
+      position:absolute; bottom:180px; right:20px; z-index:1000;
+      padding:14px 16px; display:none;
+    }
+    .legend-row { display:flex; align-items:center; gap:8px; margin-bottom:6px; font-size:12px; color:var(--dim); }
+    .legend-swatch { width:14px; height:14px; border-radius:3px; flex-shrink:0; }
+  </style>
 </head>
-
 <body>
 
-    <div id="loader">
-        <div class="spinner"></div>
-        <div class="loading-text">TERRATIME</div>
+<!-- Loader -->
+<div id="loader">
+  <div class="spinner"></div>
+  <div class="loader-title">TERRATIME</div>
+  <div class="loader-sub">LAND GROWTH INTELLIGENCE</div>
+</div>
+
+<div id="map"></div>
+
+<!-- Top Bar -->
+<div id="topbar">
+  <div class="brand glass">
+    <div class="brand-dot"></div>
+    <h1>TERRATIME</h1>
+  </div>
+  <select id="city-select" class="glass" style="margin-left: 16px; padding: 6px 12px; background: rgba(0,0,0,0.5); color: #fff; border: 1px solid var(--border); border-radius: 4px; outline: none; font-family: 'Outfit', sans-serif;">
+    <option value="delhi">Delhi</option>
+  </select>
+  <div id="search-wrap" class="glass">
+    <span class="si">🔍</span>
+    <input type="text" id="search" placeholder="Search city or place..." autocomplete="off">
+  </div>
+</div>
+
+<!-- Right Panel -->
+<div id="right-panel">
+
+  <!-- Intelligence Node -->
+  <div class="panel-section glass">
+    <div class="panel-title">Intelligence Node</div>
+    <div class="stat-row"><span class="stat-label">Region</span><span class="stat-val" id="val-region">Delhi, India</span></div>
+    <div class="stat-row"><span class="stat-label">Coordinates</span><span class="stat-val" id="val-coords">28.61, 77.21</span></div>
+    <div class="stat-row"><span class="stat-label">Data Mode</span><span id="val-mode" class="source-badge local">Local Files</span></div>
+    <div class="stat-row" style="margin-top:8px">
+      <span><span id="status-dot"></span><span id="status-text" style="font-size:12px;color:var(--dim)">Initialising...</span></span>
+    </div>
+  </div>
+
+  <!-- Layer Controls -->
+  <div class="panel-section glass">
+    <div class="panel-title">Map Layers</div>
+
+    <div class="layer-row">
+      <span class="layer-name"><span class="layer-dot" style="background:#00e5ff"></span>Sentinel-2 (RGB)</span>
+      <label class="switch"><input type="checkbox" id="tog-s2" checked><span class="sslider"></span></label>
     </div>
 
-    <div id="map"></div>
-
-    <div class="ui-overlay">
-        <div class="top-bar">
-            <div class="brand glass-panel">
-                <h1>TERRATIME</h1>
-            </div>
-
-            <div class="search-container glass-panel">
-                <span class="search-icon">🔍</span>
-                <input type="text" id="location-search" placeholder="Search any place in the world..." />
-            </div>
-
-            <div style="width: 200px;"></div> <!-- Spacer -->
-        </div>
-
-        <div class="status-panel glass-panel">
-            <h3>Intelligence Node</h3>
-            <div class="location-info">
-                <div class="info-item">
-                    <span class="info-label">Active Region</span>
-                    <span class="info-value" id="val-location">Delhi, India</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-label">Data Source</span>
-                    <span class="info-value">Sentinel-2 SR</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-label">Coordinates</span>
-                    <span class="info-value" id="val-coords">28.61, 77.21</span>
-                </div>
-            </div>
-
-            <div class="layer-control">
-                <div class="toggle-item">
-                    <span style="font-size: 13px; color: var(--text-dim);">Hybrid Labels</span>
-                    <label class="switch">
-                        <input type="checkbox" id="label-toggle" checked>
-                        <span class="slider"></span>
-                    </label>
-                </div>
-            </div>
-
-            <div style="margin-top: 10px;">
-                <p style="font-size: 12px; color: var(--text-dim); line-height: 1.4;">
-                    Base layer: Sentinel-2 Composite<br>
-                    Status: <span id="status-text" style="color: #00e5ff;">Initializing...</span>
-                </p>
-            </div>
-        </div>
-
-        <!-- Timeline Slider -->
-        <div class="timeline-container glass-panel">
-            <div class="timeline-header">
-                <span class="timeline-label">Temporal Axis</span>
-                <span class="current-year" id="year-display">2023</span>
-            </div>
-            <input type="range" min="2017" max="2024" value="2023" class="year-slider" id="year-slider">
-        </div>
+    <div class="layer-row">
+      <span class="layer-name"><span class="layer-dot" style="background:#ff4466"></span>Dynamic World (Classes)</span>
+      <label class="switch"><input type="checkbox" id="tog-dw"><span class="sslider"></span></label>
     </div>
 
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script>
-        let map;
-        let satelliteLayer;
-        let labelsLayer;
-        let currentYear = 2023;
-        let currentLat = 28.6139;
-        let currentLng = 77.2090;
+    <div class="layer-row">
+      <span class="layer-name"><span class="layer-dot" style="background:#888"></span>Labels</span>
+      <label class="switch"><input type="checkbox" id="tog-labels" checked><span class="sslider"></span></label>
+    </div>
+  </div>
 
-        // Initialize Map
-        function initMap() {
-            try {
-                map = L.map('map', {
-                    center: [currentLat, currentLng],
-                    zoom: 12,
-                    zoomControl: false
-                });
+  <!-- Available Files -->
+  <div class="panel-section glass" id="files-panel">
+    <div class="panel-title">Downloaded Files</div>
+    <div id="files-list" style="font-size:12px;color:var(--dim)">Checking...</div>
+  </div>
 
-                L.control.zoom({ position: 'bottomright' }).addTo(map);
+</div>
 
-                L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-                    attribution: '&copy; CartoDB'
-                }).addTo(map);
+<!-- Data source badges -->
+<div id="data-source-info">
+  <div class="ds-badge"><div class="dot" style="background:#00e5ff"></div>Sentinel-2 SR</div>
+  <div class="ds-badge"><div class="dot" style="background:#ff4466"></div>Dynamic World V1</div>
+  <div class="ds-badge"><div class="dot" style="background:#00ff88"></div>10m Resolution</div>
+</div>
 
-                // Add Transparent Road/Label Layer
-                labelsLayer = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}{r}.png', {
-                    pane: 'markerPane', // Ensures labels are ALWAYS on top of satellite
-                    zIndex: 1000
-                }).addTo(map);
+<!-- Timeline -->
+<div id="timeline" class="glass">
+  <div class="tl-header">
+    <span class="tl-label">Temporal Axis</span>
+    <span id="year-display">2022</span>
+  </div>
+  <div class="tl-ticks">
+    <span class="tick">2016</span><span class="tick">2017</span><span class="tick">2018</span>
+    <span class="tick">2019</span><span class="tick">2020</span><span class="tick">2021</span>
+    <span class="tick">2022</span><span class="tick">2023</span><span class="tick">2024</span>
+  </div>
+  <input type="range" id="year-slider" min="2016" max="2024" value="2022">
+</div>
 
-                // Start loading satellite tiles after map is ready
-                setTimeout(() => {
-                    updateSatelliteLayer();
-                }, 100);
+<!-- Dynamic World Legend -->
+<div id="dw-legend" class="glass">
+  <div class="panel-title">Land Cover Classes</div>
+  <div class="legend-row"><div class="legend-swatch" style="background:rgb(65,105,225)"></div>Water</div>
+  <div class="legend-row"><div class="legend-swatch" style="background:rgb(34,139,34)"></div>Trees</div>
+  <div class="legend-row"><div class="legend-swatch" style="background:rgb(144,238,144)"></div>Grass</div>
+  <div class="legend-row"><div class="legend-swatch" style="background:rgb(0,128,128)"></div>Flooded Veg</div>
+  <div class="legend-row"><div class="legend-swatch" style="background:rgb(255,215,0)"></div>Crops</div>
+  <div class="legend-row"><div class="legend-swatch" style="background:rgb(107,142,35)"></div>Shrub</div>
+  <div class="legend-row"><div class="legend-swatch" style="background:rgb(220,50,50)"></div>Built-up</div>
+  <div class="legend-row"><div class="legend-swatch" style="background:rgb(210,180,140)"></div>Bare Ground</div>
+</div>
 
-            } catch (err) {
-                console.error("Map Init Error:", err);
-            } finally {
-                // Always hide loader regardless of errors
-                setTimeout(() => {
-                    const loader = document.getElementById('loader');
-                    if (loader) {
-                        loader.style.opacity = '0';
-                        setTimeout(() => { loader.style.display = 'none'; }, 500);
-                    }
-                }, 1500);
-            }
-        }
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const API = '';    // Same origin
+let currentCity = 'delhi';
+let currentYear = 2022;
+let availableCities = {}; // Stores all cities and datasets
 
-        let lastFetchBounds = null;
-        let lastFetchZoom = null;
-        let lastFetchYear = null;
-        let isFetching = false;
+// ── Layers ──────────────────────────────────────────────────────────────────
 
-        async function updateSatelliteLayer() {
-            if (isFetching) return; // Prevent overlapping requests
+let s2Layer    = null;
+let dwLayer    = null;
+let labelsLayer = null;
 
-            const currentBounds = map.getBounds();
-            const currentZoom = map.getZoom();
+// ── Init map ────────────────────────────────────────────────────────────────
+const map = L.map('map', { center:[28.6139, 77.2090], zoom:11, zoomControl:false });
+L.control.zoom({ position:'bottomright' }).addTo(map);
 
-            // Check if we are inside the existing 1200km buffer
-            if (lastFetchBounds && lastFetchZoom === currentZoom && lastFetchYear === currentYear) {
-                if (lastFetchBounds.contains(currentBounds)) {
-                    console.log("%c[TerraTime] Within 1200km buffer - skipping fetch.", "color: #00e5ff;");
-                    return;
-                }
-            }
+// Global Satellite Base
+L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+  attribution:'Esri World Imagery', maxZoom:19
+}).addTo(map);
 
-            const statusText = document.getElementById('status-text');
-            if (statusText) {
-                statusText.innerText = "Fetching GEE Tiles...";
-                statusText.style.color = "#00e5ff";
-            }
+// Labels (top layer)
+labelsLayer = L.tileLayer('https://services.arcgisonline.com/arcgis/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}', {
+  zIndex:800, pane:'markerPane'
+}).addTo(map);
 
-            if (!map) return;
 
-            // Get current viewport bounds
-            const bounds = map.getBounds();
-            const center = map.getCenter();
-            const west = bounds.getWest();
-            const south = bounds.getSouth();
-            const east = bounds.getEast();
-            const north = bounds.getNorth();
+// ── Tile URL builders ───────────────────────────────────────────────────────
+function s2TileUrl(year) {
+  return `${API}/api/tiles/${currentCity}/s2/${year}/{z}/{x}/{y}.png`;
+}
+function dwTileUrl(year) {
+  return `${API}/api/tiles/${currentCity}/dw/${year}/{z}/{x}/{y}.png`;
+}
 
-            // Dynamically update Intelligence Node UI
-            document.getElementById('val-coords').innerText = `${center.lat.toFixed(2)}, ${center.lng.toFixed(2)}`;
-            document.getElementById('val-location').innerText = "Scanning Location...";
-            
-            // Reverse Geocode to get the city name
-            fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${center.lat}&lon=${center.lng}&zoom=10`)
-                .then(res => res.json())
-                .then(data => {
-                    if (data && data.address) {
-                        let city = data.address.city || data.address.town || data.address.state || "Unknown Region";
-                        let country = data.address.country || "";
-                        document.getElementById('val-location').innerText = `${city}${country ? ', ' + country : ''}`;
-                    } else {
-                        document.getElementById('val-location').innerText = "Remote Region";
-                    }
-                }).catch(() => {
-                    document.getElementById('val-location').innerText = "Unknown Location";
-                });
+// ── Update slider fill ──────────────────────────────────────────────────────
+function updateSliderFill(slider) {
+  const min = +slider.min, max = +slider.max, val = +slider.value;
+  const pct = ((val - min) / (max - min)) * 100;
+  slider.style.background = `linear-gradient(to right, var(--primary) ${pct}%, rgba(255,255,255,0.1) ${pct}%)`;
+}
 
-            // If we are zoomed out (Global Mode), set a massive buffer so we never fetch again
-            if (currentZoom < 7) {
-                const p1 = L.latLng(85, 180);
-                const p2 = L.latLng(-85, -180);
-                lastFetchBounds = L.latLngBounds(p1, p2);
-            } else {
-                // Buffer of +/- 5 degrees is roughly an 1100km box.
-                // This stops the frontend from asking for new data every time you move the mouse slightly.
-                const p1 = L.latLng(center.lat + 5, center.lng + 5); 
-                const p2 = L.latLng(center.lat - 5, center.lng - 5);
-                lastFetchBounds = L.latLngBounds(p1, p2);
-            }
-            lastFetchZoom = currentZoom;
-            lastFetchYear = currentYear;
-            isFetching = true;
+// ── Cinematic Crossfade Transition System ───────────────────────────────────
+let activeS2Bg = null;
+let activeDWBg = null;
 
-            try {
-                const url = `/api/tile-url?west=${west}&south=${south}&east=${east}&north=${north}&year=${currentYear}`;
-                const response = await fetch(url);
+function refreshS2(year) {
+  const url = s2TileUrl(year);
 
-                if (!response.ok) throw new Error("API Offline");
+  const newLayer = L.tileLayer(url, {
+    zIndex: 200, maxZoom: 19, opacity: 1.0, 
+    errorTileUrl: 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
+  });
 
-                const data = await response.json();
+  if (!document.getElementById('tog-s2').checked) {
+    if (activeS2Bg) map.removeLayer(activeS2Bg);
+    activeS2Bg = null;
+    return;
+  }
 
-                if (data.url) {
-                    if (satelliteLayer) {
-                        // Use the official Leaflet method for seamless updates
-                        satelliteLayer.setUrl(data.url);
-                    } else {
-                        satelliteLayer = L.tileLayer(data.url, {
-                            attribution: 'Google Earth Engine',
-                            keepBuffer: 0,
-                            updateWhenIdle: true,
-                            updateWhenZooming: false,
-                            errorTileUrl: 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' // Instantly hides broken image icon
-                        }).addTo(map);
+  // Add to map and trigger CSS fade
+  newLayer.on('add', () => {
+    const container = newLayer.getContainer();
+    if (container) {
+      container.style.opacity = '0';
+      container.style.transition = 'opacity 1000ms ease'; 
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => { container.style.opacity = '1'; });
+      });
+    }
+  });
 
-                        // Automatic Tile Retry System
-                        satelliteLayer.on('tileerror', function(e) {
-                            let tile = e.tile;
-                            let retries = parseInt(tile.getAttribute('data-retry') || '0', 10);
-                            
-                            // Retry up to 3 times
-                            if (retries < 3) {
-                                setTimeout(() => {
-                                    tile.setAttribute('data-retry', retries + 1);
-                                    console.warn(`[TerraTime] Retrying failed tile (Attempt ${retries + 1})...`);
-                                    
-                                    // Mathematically reconstruct the pristine original URL using the tile coordinates
-                                    let originalSrc = L.Util.template(data.url, e.coords);
-                                    
-                                    // Trigger the retry
-                                    tile.src = originalSrc;
-                                }, 1500 * (retries + 1)); // Waits 1.5s, then 3s, then 4.5s
-                            }
-                        });
-                    }
+  newLayer.addTo(map);
+  newLayer.once('load', () => setStatus('Ready', 'ok'));
 
-                    if (statusText) statusText.innerHTML = '<span style="color: #00ff88;">Stable Connection</span>';
-                } else {
-                    if (statusText) statusText.innerHTML = '<span style="color: #ffcc00;">No Data for this Year</span>';
-                }
-            } catch (err) {
-                console.error("Error fetching tiles:", err);
-                if (statusText) statusText.innerHTML = '<span style="color: #ff4444;">API Error - Check Port 5000</span>';
-            } finally {
-                isFetching = false;
-            }
-        }
+  // DO NOT use a blind timer. Wait for EVERY tile (even edges) to finish loading.
+  if (activeS2Bg && activeS2Bg !== newLayer) {
+    const oldBg = activeS2Bg;
+    
+    const cleanup = () => {
+      if (map.hasLayer(oldBg)) map.removeLayer(oldBg);
+    };
 
-        // Auto-update when panning or zooming
-        let moveTimeout;
-        window.onload = () => {
-            initMap();
+    // Remove old background only when 100% of new tiles are fully drawn
+    newLayer.once('load', cleanup);
+    
+    // Safety fallback just in case some tiles 404 and 'load' never fires
+    setTimeout(cleanup, 8000); 
+  }
 
-            map.on('moveend', () => {
-                clearTimeout(moveTimeout);
-                moveTimeout = setTimeout(() => {
-                    updateSatelliteLayer();
-                }, 800);
-            });
-        };
+  activeS2Bg = newLayer;
+}
 
-        // Timeline Slider Logic
-        const yearSlider = document.getElementById('year-slider');
-        const yearDisplay = document.getElementById('year-display');
+function refreshDW(year) {
+  const url = dwTileUrl(year);
 
-        yearSlider.addEventListener('input', (e) => {
-            currentYear = e.target.value;
-            yearDisplay.innerText = currentYear;
-        });
+  const newLayer = L.tileLayer(url, {
+    zIndex: 300, maxZoom: 19, opacity: 0.75, 
+    errorTileUrl: 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
+  });
 
-        yearSlider.addEventListener('change', () => {
-            updateSatelliteLayer();
-        });
+  if (!document.getElementById('tog-dw').checked) {
+    if (activeDWBg) map.removeLayer(activeDWBg);
+    activeDWBg = null;
+    return;
+  }
 
-        // Label Toggle Logic
-        document.getElementById('label-toggle').addEventListener('change', (e) => {
-            if (e.target.checked) {
-                map.addLayer(labelsLayer);
-            } else {
-                map.removeLayer(labelsLayer);
-            }
-        });
+  newLayer.on('add', () => {
+    const container = newLayer.getContainer();
+    if (container) {
+      container.style.opacity = '0';
+      container.style.transition = 'opacity 1000ms ease';
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => { container.style.opacity = '0.75'; });
+      });
+    }
+  });
 
-        // Search Functionality
-        const searchInput = document.getElementById('location-search');
-        searchInput.addEventListener('keypress', async (e) => {
-            if (e.key === 'Enter') {
-                const query = searchInput.value;
-                if (!query) return;
+  newLayer.addTo(map);
+  newLayer.once('load', () => setStatus('Ready', 'ok'));
 
-                try {
-                    const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${query}`);
-                    const results = await response.json();
+  if (activeDWBg && activeDWBg !== newLayer) {
+    const oldBg = activeDWBg;
+    const cleanup = () => {
+      if (map.hasLayer(oldBg)) map.removeLayer(oldBg);
+    };
+    newLayer.once('load', cleanup);
+    setTimeout(cleanup, 8000);
+  }
 
-                    if (results.length > 0) {
-                        const { lat, lon, display_name } = results[0];
-                        currentLat = parseFloat(lat);
-                        currentLng = parseFloat(lon);
+  activeDWBg = newLayer;
+}
 
-                        map.setView([currentLat, currentLng], 12);
-                        document.getElementById('val-location').innerText = display_name.split(',')[0];
-                        document.getElementById('val-coords').innerText = `${currentLat.toFixed(2)}, ${currentLng.toFixed(2)}`;
-                        updateSatelliteLayer();
-                    }
-                } catch (err) {
-                    console.error("Geocoding error:", err);
-                }
-            }
-        });
-    </script>
+
+// ── Load available files from API ──────────────────────────────────────────
+async function loadAvailable() {
+  try {
+    const res = await fetch('/api/available');
+    availableCities = await res.json();
+    
+    const citySelect = document.getElementById('city-select');
+    citySelect.innerHTML = '';
+    
+    if (Object.keys(availableCities).length === 0) {
+      document.getElementById('files-list').innerHTML = '<span style="color:var(--yellow)">No local files yet.<br>Run gee_export.py<br>then restart server.</span>';
+      document.getElementById('val-mode').textContent  = 'Live GEE';
+      document.getElementById('val-mode').className    = 'source-badge live';
+      setStatus('Live GEE fallback', 'warn');
+    } else {
+      for (const city in availableCities) {
+        const option = document.createElement('option');
+        option.value = city;
+        option.textContent = city.charAt(0).toUpperCase() + city.slice(1);
+        if (city === currentCity) option.selected = true;
+        citySelect.appendChild(option);
+      }
+      
+      // If currentCity is not available, default to the first available city
+      if (!availableCities[currentCity]) {
+         currentCity = Object.keys(availableCities)[0];
+         citySelect.value = currentCity;
+      }
+      
+      updateSidebarFiles(currentCity);
+    }
+  } catch(e) {
+    document.getElementById('files-list').textContent = 'Cannot reach API';
+    setStatus('API error', 'err');
+  }
+}
+
+function updateSidebarFiles(city) {
+    const data = availableCities[city];
+    if (!data) return;
+    const s2count = data.s2.length;
+    const dwcount = data.dw.length;
+    
+    const el = document.getElementById('files-list');
+    el.innerHTML =
+      `<div style="color:var(--primary);margin-bottom:4px">Sentinel-2: ${s2count} years</div>` +
+      data.s2.map(y => `<span style="margin-right:6px;color:#fff">${y}</span>`).join('') +
+      `<div style="color:var(--red);margin-top:8px;margin-bottom:4px">Dynamic World: ${dwcount} years</div>` +
+      data.dw.map(y => `<span style="margin-right:6px;color:#fff">${y}</span>`).join('');
+    
+    document.getElementById('val-mode').textContent = 'Local Files';
+    document.getElementById('val-mode').className   = 'source-badge local';
+    setStatus(`Local files ready`, 'ok');
+
+    // Auto-select an available year if currentYear isn't downloaded yet for this city
+    if (s2count > 0 && !data.s2.includes(currentYear)) {
+      currentYear = Math.max(...data.s2);
+      const slider = document.getElementById('year-slider');
+      slider.value = currentYear;
+      document.getElementById('year-display').textContent = currentYear;
+      updateSliderFill(slider);
+    }
+}
+
+document.getElementById('city-select').addEventListener('change', e => {
+  currentCity = e.target.value;
+  updateSidebarFiles(currentCity);
+  
+  if (currentCity === 'mumbai') map.flyTo([19.0760, 72.8777], 11);
+  if (currentCity === 'delhi') map.flyTo([28.6139, 77.2090], 11);
+  
+  refreshS2(currentYear);
+  refreshDW(currentYear);
+});
+
+// ── Status helper ──────────────────────────────────────────────────────────
+function setStatus(msg, state) {
+  document.getElementById('status-text').textContent = msg;
+  const dot = document.getElementById('status-dot');
+  dot.className = '';
+  if (state === 'ok')   dot.classList.add('ok');
+  if (state === 'err')  dot.classList.add('err');
+}
+
+// ── Reverse geocode on pan ─────────────────────────────────────────────────
+let geoTimeout;
+map.on('moveend', () => {
+  const c = map.getCenter();
+  document.getElementById('val-coords').textContent = `${c.lat.toFixed(3)}, ${c.lng.toFixed(3)}`;
+  clearTimeout(geoTimeout);
+  geoTimeout = setTimeout(async () => {
+    try {
+      const res = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${c.lat}&lon=${c.lng}&zoom=10`);
+      const d = await res.json();
+      const city = d.address?.city || d.address?.town || d.address?.state || 'Remote Region';
+      const country = d.address?.country || '';
+      document.getElementById('val-region').textContent = `${city}${country ? ', '+country : ''}`;
+    } catch {}
+  }, 1200);
+});
+
+// ── Timeline slider ────────────────────────────────────────────────────────
+const slider = document.getElementById('year-slider');
+const yearDisplay = document.getElementById('year-display');
+
+slider.addEventListener('input', e => {
+  currentYear = +e.target.value;
+  yearDisplay.textContent = currentYear;
+  updateSliderFill(slider);
+});
+
+let updateTimeout;
+slider.addEventListener('change', () => {
+  setStatus(`Loading ${currentYear}...`, '');
+  clearTimeout(updateTimeout);
+  updateTimeout = setTimeout(() => {
+    refreshS2(currentYear);
+    refreshDW(currentYear);
+  }, 300);
+});
+updateSliderFill(slider);
+
+// ── Layer toggles ──────────────────────────────────────────────────────────
+document.getElementById('tog-s2').addEventListener('change', e => {
+  refreshS2(currentYear);
+});
+
+document.getElementById('tog-dw').addEventListener('change', e => {
+  refreshDW(currentYear);
+  if (e.target.checked) {
+    document.getElementById('dw-legend').style.display = 'block';
+  } else {
+    document.getElementById('dw-legend').style.display = 'none';
+  }
+});
+
+document.getElementById('tog-labels').addEventListener('change', e => {
+  e.target.checked ? labelsLayer.addTo(map) : map.removeLayer(labelsLayer);
+});
+
+// ── Search ─────────────────────────────────────────────────────────────────
+document.getElementById('search').addEventListener('keypress', async e => {
+  if (e.key !== 'Enter') return;
+  const rawQ = e.target.value.trim();
+  const q = rawQ.toLowerCase();
+  if (!q) return;
+  
+  // If they searched for a city we have downloaded, automatically switch to it!
+  if (availableCities[q] && currentCity !== q) {
+      document.getElementById('city-select').value = q;
+      document.getElementById('city-select').dispatchEvent(new Event('change'));
+      return;
+  }
+
+  try {
+    const res = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(rawQ)}`);
+    const results = await res.json();
+    if (results.length > 0) {
+      const { lat, lon } = results[0];
+      map.flyTo([+lat, +lon], 12);
+    }
+  } catch {}
+});
+
+// ── Boot ───────────────────────────────────────────────────────────────────
+window.addEventListener('load', async () => {
+  // Hide loader
+  setTimeout(() => {
+    const l = document.getElementById('loader');
+    l.style.opacity = '0';
+    setTimeout(() => l.style.display = 'none', 600);
+  }, 1400);
+
+  // Check what files are available
+  await loadAvailable();
+
+  // Load initial layers
+  refreshS2(currentYear);
+  refreshDW(currentYear);
+});
+</script>
 </body>
-
 </html>
