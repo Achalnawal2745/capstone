@@ -8,6 +8,13 @@ data/
 *.tif
 *.crdownload
 test.png
+*.tar.gz
+*.zip
+*.tar
+*.gz
+color_ops.tar.gz
+color_ops_dir/
+
 
 # Python
 __pycache__/
