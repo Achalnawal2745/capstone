@@ -159,6 +159,28 @@
     }
     .legend-row { display:flex; align-items:center; gap:8px; margin-bottom:6px; font-size:12px; color:var(--dim); }
     .legend-swatch { width:14px; height:14px; border-radius:3px; flex-shrink:0; }
+
+    /* Custom Sleek Glassmorphic Tooltips */
+    .leaflet-tooltip {
+      background: rgba(8, 14, 28, 0.95) !important;
+      backdrop-filter: blur(16px) !important;
+      -webkit-backdrop-filter: blur(16px) !important;
+      border: 1px solid rgba(0, 229, 255, 0.35) !important;
+      border-radius: 8px !important;
+      color: #ffffff !important;
+      font-family: 'Inter', sans-serif !important;
+      font-size: 12px !important;
+      padding: 7px 11px !important;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.75) !important;
+      pointer-events: none !important;
+      white-space: nowrap !important;
+    }
+    .leaflet-tooltip-top:before { border-top-color: rgba(8, 14, 28, 0.95) !important; }
+    .leaflet-tooltip-bottom:before { border-bottom-color: rgba(8, 14, 28, 0.95) !important; }
+    .leaflet-tooltip-left:before { border-left-color: rgba(8, 14, 28, 0.95) !important; }
+    .leaflet-tooltip-right:before { border-right-color: rgba(8, 14, 28, 0.95) !important; }
+    .tt-title { font-weight: 600; color: #ffffff; margin-bottom: 2px; font-size: 12px; }
+    .tt-sub { font-size: 10px; color: var(--primary); opacity: 0.9; }
   </style>
 </head>
 <body>
@@ -495,7 +517,7 @@ document.getElementById('city-select').addEventListener('change', e => {
   
   refreshS2(currentYear);
   refreshDW(currentYear);
-  refreshInfrastructure();
+  loadInfrastructureData();
 });
 
 // ── Status helper ──────────────────────────────────────────────────────────
@@ -541,92 +563,108 @@ slider.addEventListener('change', () => {
   updateTimeout = setTimeout(() => {
     refreshS2(currentYear);
     refreshDW(currentYear);
+    renderInfrastructureForYear(currentYear);
   }, 300);
 });
 updateSliderFill(slider);
 
-// ── Infrastructure Layers (Metro & Roads) ──────────────────────────────────
-async function refreshInfrastructure() {
+// ── Timeline-Aware Infrastructure (Metro & Roads) ──────────────────────────
+let rawMetroLines    = null;
+let rawMetroStations = null;
+let rawRoads         = null;
+
+async function loadInfrastructureData() {
+  try {
+    const resLines = await fetch(`/api/infrastructure/${currentCity}/metro_lines.geojson?t=${Date.now()}`);
+    if (resLines.ok) rawMetroLines = await resLines.json();
+  } catch (e) { rawMetroLines = null; }
+
+  try {
+    const resSt = await fetch(`/api/infrastructure/${currentCity}/metro_stations.geojson?t=${Date.now()}`);
+    if (resSt.ok) rawMetroStations = await resSt.json();
+  } catch (e) { rawMetroStations = null; }
+
+  try {
+    const resRoads = await fetch(`/api/infrastructure/${currentCity}/roads.geojson?t=${Date.now()}`);
+    if (resRoads.ok) rawRoads = await resRoads.json();
+  } catch (e) { rawRoads = null; }
+
+  renderInfrastructureForYear(currentYear);
+}
+
+function renderInfrastructureForYear(year) {
   if (metroLayer) { map.removeLayer(metroLayer); metroLayer = null; }
   if (roadsLayer) { map.removeLayer(roadsLayer); roadsLayer = null; }
 
   const metroSubLayers = [];
 
-  // 1. Load Connected Metro Lines with Official Colors & Casing Border
-  try {
-    const resLines = await fetch(`/api/infrastructure/${currentCity}/metro_lines.geojson?t=${Date.now()}`);
-    if (resLines.ok) {
-      const dataLines = await resLines.json();
+  // 1. Connected Metro Lines (Filtered by year <= slider year in official colors)
+  if (rawMetroLines) {
+    const casingLayer = L.geoJSON(rawMetroLines, {
+      filter: (feature) => (feature.properties?.opening_year || 2015) <= year,
+      style: {
+        color: '#ffffff',
+        weight: 5.0,
+        opacity: 0.85,
+        lineCap: 'round',
+        lineJoin: 'round'
+      },
+      interactive: false
+    });
+    metroSubLayers.push(casingLayer);
 
-      // Outer White Casing (for sharp contrast over satellite imagery)
-      const casingLayer = L.geoJSON(dataLines, {
-        style: {
-          color: '#ffffff',
-          weight: 5.0,
-          opacity: 0.85,
-          lineCap: 'round',
-          lineJoin: 'round'
-        },
-        interactive: false
-      });
-      metroSubLayers.push(casingLayer);
-
-      // Inner Colored Line (Yellow, Blue, Red, Pink, Magenta, etc.)
-      const colorLayer = L.geoJSON(dataLines, {
-        style: (feature) => ({
-          color: feature.properties?.color || '#ffd600',
-          weight: 3.0,
-          opacity: 1.0,
-          lineCap: 'round',
-          lineJoin: 'round'
-        }),
-        onEachFeature: (feature, layer) => {
-          const name = feature.properties?.name || 'Metro Corridor';
-          const color = feature.properties?.color || '#ffd600';
-          layer.bindTooltip(
-            `<div style="display:flex;align-items:center;gap:6px">` +
-            `<span style="width:10px;height:10px;border-radius:50%;background:${color};border:1px solid #fff"></span>` +
-            `<b>🚇 ${name}</b>` +
-            `</div>`,
-            { sticky: true, className: 'glass' }
-          );
-        }
-      });
-      metroSubLayers.push(colorLayer);
-    }
-  } catch (e) {
-    console.warn("Metro lines not available for this city");
+    const colorLayer = L.geoJSON(rawMetroLines, {
+      filter: (feature) => (feature.properties?.opening_year || 2015) <= year,
+      style: (feature) => ({
+        color: feature.properties?.color || '#ffd600',
+        weight: 3.0,
+        opacity: 1.0,
+        lineCap: 'round',
+        lineJoin: 'round'
+      }),
+      onEachFeature: (feature, layer) => {
+        const name = feature.properties?.name || 'Metro Corridor';
+        const color = feature.properties?.color || '#ffd600';
+        const openYr = feature.properties?.opening_year || 2015;
+        layer.bindTooltip(
+          `<div class="tt-title" style="display:flex;align-items:center;gap:6px">` +
+          `<span style="width:8px;height:8px;border-radius:50%;background:${color};border:1px solid #fff;display:inline-block"></span>` +
+          `<span>🚇 ${name}</span>` +
+          `</div>` +
+          `<div class="tt-sub" style="color:${color}">Active in ${year} (Opened ~${openYr})</div>`,
+          { direction: 'top', opacity: 1.0 }
+        );
+      }
+    });
+    metroSubLayers.push(colorLayer);
   }
 
-  // 2. Load Metro Stations
-  try {
-    const resStations = await fetch(`/api/infrastructure/${currentCity}/metro_stations.geojson?t=${Date.now()}`);
-    if (resStations.ok) {
-      const dataStations = await resStations.json();
-      const stationsLayer = L.geoJSON(dataStations, {
-        pointToLayer: (feature, latlng) => {
-          return L.circleMarker(latlng, {
-            radius: 5,
-            fillColor: '#ffffff',
-            color: '#05080f',
-            weight: 2,
-            opacity: 1,
-            fillOpacity: 1
-          });
-        },
-        onEachFeature: (feature, layer) => {
-          const name = feature.properties?.name || 'Metro Station';
-          const line = feature.properties?.line || 'Delhi Metro';
-          layer.bindTooltip(
-            `<b>🚇 ${name}</b><br><span style="color:#00e5ff;font-size:11px">${line}</span>`,
-            { direction: 'top', offset: [0, -6], className: 'glass' }
-          );
-        }
-      });
-      metroSubLayers.push(stationsLayer);
-    }
-  } catch (e) {
-    console.warn("Metro stations not available for this city");
+  // 2. Metro Stations (Filtered by year <= slider year)
+  if (rawMetroStations) {
+    const stationsLayer = L.geoJSON(rawMetroStations, {
+      filter: (feature) => (feature.properties?.opening_year || 2015) <= year,
+      pointToLayer: (feature, latlng) => {
+        return L.circleMarker(latlng, {
+          radius: 3.5,
+          fillColor: '#ffffff',
+          color: '#05080f',
+          weight: 1.5,
+          opacity: 1,
+          fillOpacity: 1
+        });
+      },
+      onEachFeature: (feature, layer) => {
+        const name = feature.properties?.name || 'Metro Station';
+        const line = feature.properties?.line || 'Delhi Metro';
+        const openYr = feature.properties?.opening_year || 2015;
+        layer.bindTooltip(
+          `<div class="tt-title">🚇 ${name}</div>` +
+          `<div class="tt-sub">${line} • Active in ${year}</div>`,
+          { direction: 'top', offset: [0, -4], opacity: 1.0 }
+        );
+      }
+    });
+    metroSubLayers.push(stationsLayer);
   }
 
   if (metroSubLayers.length > 0) {
@@ -636,32 +674,28 @@ async function refreshInfrastructure() {
     }
   }
 
-  // 3. Load Roads
-  try {
-    const resRoads = await fetch(`/api/infrastructure/${currentCity}/roads.geojson?t=${Date.now()}`);
-    if (resRoads.ok) {
-      const dataRoads = await resRoads.json();
-      roadsLayer = L.geoJSON(dataRoads, {
-        style: (feature) => ({
-          color: '#ff9100',
-          weight: feature.properties?.highway === 'motorway' ? 3.5 : 2.2,
-          opacity: 0.8
-        }),
-        onEachFeature: (feature, layer) => {
-          const name = feature.properties?.name || 'Major Highway';
-          const hwy = feature.properties?.highway || 'Highway';
-          layer.bindTooltip(`<b>🛣️ ${name}</b><br><span style="color:#ff9100;font-size:11px">${hwy}</span>`, {
-            sticky: true,
-            className: 'glass'
-          });
-        }
-      });
-      if (document.getElementById('tog-roads').checked) {
-        roadsLayer.addTo(map);
+  // 3. Major Highways (Filtered by year <= slider year)
+  if (rawRoads) {
+    roadsLayer = L.geoJSON(rawRoads, {
+      filter: (feature) => (feature.properties?.opening_year || 2015) <= year,
+      style: (feature) => ({
+        color: '#ff9100',
+        weight: feature.properties?.highway === 'motorway' ? 3.0 : 2.0,
+        opacity: 0.85
+      }),
+      onEachFeature: (feature, layer) => {
+        const name = feature.properties?.name || 'Major Highway';
+        const hwy = feature.properties?.highway || 'Highway';
+        layer.bindTooltip(
+          `<div class="tt-title">🛣️ ${name}</div>` +
+          `<div class="tt-sub" style="color:#ff9100">${hwy} • Active in ${year}</div>`,
+          { direction: 'top', opacity: 1.0 }
+        );
       }
+    });
+    if (document.getElementById('tog-roads').checked) {
+      roadsLayer.addTo(map);
     }
-  } catch (e) {
-    console.warn("Road network not available for this city");
   }
 }
 
@@ -680,19 +714,11 @@ document.getElementById('tog-dw').addEventListener('change', e => {
 });
 
 document.getElementById('tog-metro').addEventListener('change', e => {
-  if (metroLayer) {
-    e.target.checked ? metroLayer.addTo(map) : map.removeLayer(metroLayer);
-  } else if (e.target.checked) {
-    refreshInfrastructure();
-  }
+  renderInfrastructureForYear(currentYear);
 });
 
 document.getElementById('tog-roads').addEventListener('change', e => {
-  if (roadsLayer) {
-    e.target.checked ? roadsLayer.addTo(map) : map.removeLayer(roadsLayer);
-  } else if (e.target.checked) {
-    refreshInfrastructure();
-  }
+  renderInfrastructureForYear(currentYear);
 });
 
 document.getElementById('tog-labels').addEventListener('change', e => {
@@ -738,7 +764,7 @@ window.addEventListener('load', async () => {
   // Load initial layers
   refreshS2(currentYear);
   refreshDW(currentYear);
-  refreshInfrastructure();
+  loadInfrastructureData();
 });
 </script>
 </body>
