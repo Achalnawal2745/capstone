@@ -66,7 +66,7 @@
 
     /* ── Right panel ── */
     #right-panel {
-      position:absolute; top:84px; right:20px; width:270px; z-index:1000;
+      position:absolute; top:84px; right:20px; width:290px; z-index:1000;
       display:flex; flex-direction:column; gap:12px;
     }
 
@@ -441,12 +441,24 @@ function updateSidebarFiles(city) {
     const s2count = data.s2.length;
     const dwcount = data.dw.length;
     
+    const renderYearBadges = (years) => `
+      <div style="display:flex; flex-wrap:wrap; gap:4px; margin-top:4px;">
+        ${years.map(y => `<span style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:4px; padding:2px 6px; font-size:11px; color:#fff; font-weight:500;">${y}</span>`).join('')}
+      </div>
+    `;
+
     const el = document.getElementById('files-list');
     el.innerHTML =
-      `<div style="color:var(--primary);margin-bottom:4px">Sentinel-2: ${s2count} years</div>` +
-      data.s2.map(y => `<span style="margin-right:6px;color:#fff">${y}</span>`).join('') +
-      `<div style="color:var(--red);margin-top:8px;margin-bottom:4px">Dynamic World: ${dwcount} years</div>` +
-      data.dw.map(y => `<span style="margin-right:6px;color:#fff">${y}</span>`).join('');
+      `<div style="color:var(--primary); font-size:12px; font-weight:600; display:flex; justify-content:space-between; align-items:center;">
+         <span>Sentinel-2</span>
+         <span style="font-size:11px; opacity:0.8;">${s2count} years</span>
+       </div>` +
+      renderYearBadges(data.s2) +
+      `<div style="color:var(--red); font-size:12px; font-weight:600; margin-top:10px; display:flex; justify-content:space-between; align-items:center;">
+         <span>Dynamic World</span>
+         <span style="font-size:11px; opacity:0.8;">${dwcount} years</span>
+       </div>` +
+      renderYearBadges(data.dw);
     
     document.getElementById('val-mode').textContent = 'Local Files';
     document.getElementById('val-mode').className   = 'source-badge local';
