@@ -29,11 +29,30 @@ app.add_middleware(
 )
 
 GEOTIFF_DIR = r"e:\capstone\data\geotiffs"
+INFRA_DIR   = r"e:\capstone\data\infrastructure"
 
 # ── Serve frontend ─────────────────────────────────────────────────────────────
 @app.get("/")
 async def read_index():
     return FileResponse('index.html')
+
+
+# ── Serve Infrastructure GeoJSON (Metro & Roads) ──────────────────────────────
+@app.get("/api/infrastructure/{city}/{layer}.geojson")
+async def get_infrastructure(city: str, layer: str):
+    """Serves metro stations or road network GeoJSON layers."""
+    if layer not in ("metro_stations", "metro_lines", "roads"):
+        raise HTTPException(400, "Layer must be 'metro_stations', 'metro_lines', or 'roads'")
+    
+    filename = f"{city}_{layer}.geojson"
+    path = os.path.join(INFRA_DIR, filename)
+    if not os.path.exists(path):
+        raise HTTPException(404, f"Infrastructure layer not found: {filename}")
+    
+    return FileResponse(path, media_type="application/geo+json", headers={
+        "Cache-Control": "no-cache, no-store, must-revalidate",
+        "Access-Control-Allow-Origin": "*"
+    })
 
 
 # ── Helper: check if a local GeoTIFF exists ────────────────────────────────────
