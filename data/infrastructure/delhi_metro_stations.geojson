@@ -1,0 +1,4768 @@
+{
+  "type": "FeatureCollection",
+  "city": "delhi",
+  "type_layer": "metro_stations",
+  "total_count": 280,
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1316496,
+          28.6527444
+        ]
+      },
+      "properties": {
+        "id": 249823635,
+        "name": "Ramesh Nagar",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1692817,
+          28.6450127
+        ]
+      },
+      "properties": {
+        "id": 268217229,
+        "name": "Patel Nagar",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1071813,
+          28.7208064
+        ]
+      },
+      "properties": {
+        "id": 268381455,
+        "name": "Rithala",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1988974,
+          28.6667177
+        ]
+      },
+      "properties": {
+        "id": 268381457,
+        "name": "Pratap Nagar",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2074156,
+          28.6664068
+        ]
+      },
+      "properties": {
+        "id": 268381463,
+        "name": "Pul Bangash",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2282488,
+          28.6674493
+        ]
+      },
+      "properties": {
+        "id": 268381477,
+        "name": "Kashmere Gate",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1405393,
+          28.6980415
+        ]
+      },
+      "properties": {
+        "id": 311963955,
+        "name": "Kohat Enclave",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1885235,
+          28.6440122
+        ]
+      },
+      "properties": {
+        "id": 345234441,
+        "name": "Karol Bagh",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1506635,
+          28.655746
+        ]
+      },
+      "properties": {
+        "id": 347676531,
+        "name": "Kirti Nagar (Blue Line)",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1582587,
+          28.6515829
+        ]
+      },
+      "properties": {
+        "id": 347676595,
+        "name": "Shadipur",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1424288,
+          28.657859
+        ]
+      },
+      "properties": {
+        "id": 347676947,
+        "name": "Moti Nagar",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0930017,
+          28.4812716
+        ]
+      },
+      "properties": {
+        "id": 535297593,
+        "name": "Sikanderpur",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1207949,
+          28.5487786
+        ]
+      },
+      "properties": {
+        "id": 554257763,
+        "name": "Delhi Aerocity",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2067072,
+          28.5442564
+        ]
+      },
+      "properties": {
+        "id": 554257787,
+        "name": "Hauz Khas (Yellow Line)",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2113218,
+          28.6288963
+        ]
+      },
+      "properties": {
+        "id": 554257833,
+        "name": "Shivaji Stadium",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2227421,
+          28.6434826
+        ]
+      },
+      "properties": {
+        "id": 554257841,
+        "name": "New Delhi",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2166306,
+          28.6671626
+        ]
+      },
+      "properties": {
+        "id": 561316983,
+        "name": "Tis Hazari",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2505301,
+          28.6684339
+        ]
+      },
+      "properties": {
+        "id": 663755930,
+        "name": "Shastri Park",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2668137,
+          28.6698165
+        ]
+      },
+      "properties": {
+        "id": 663758609,
+        "name": "Seelampur",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2778473,
+          28.6717907
+        ]
+      },
+      "properties": {
+        "id": 663758748,
+        "name": "Welcome (Red Line)",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2898858,
+          28.6734298
+        ]
+      },
+      "properties": {
+        "id": 663758998,
+        "name": "Shahdara",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3123949,
+          28.6757197
+        ]
+      },
+      "properties": {
+        "id": 663759851,
+        "name": "Jhilmil",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1818589,
+          28.6700885
+        ]
+      },
+      "properties": {
+        "id": 663761411,
+        "name": "Shastri Nagar",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1703467,
+          28.6735891
+        ]
+      },
+      "properties": {
+        "id": 663761428,
+        "name": "Inderlok (Red Line)",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1647754,
+          28.6824082
+        ]
+      },
+      "properties": {
+        "id": 663761505,
+        "name": "Kanhaiya Nagar",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1616833,
+          28.6889264
+        ]
+      },
+      "properties": {
+        "id": 663762151,
+        "name": "Keshav Puram",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1524856,
+          28.6960485
+        ]
+      },
+      "properties": {
+        "id": 663762964,
+        "name": "Netaji Subhash Place (Red Line)",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1322497,
+          28.7032676
+        ]
+      },
+      "properties": {
+        "id": 663765153,
+        "name": "Madhuban Chowk",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1259971,
+          28.7075774
+        ]
+      },
+      "properties": {
+        "id": 663766390,
+        "name": "Rohini East",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2063998,
+          28.6981333
+        ]
+      },
+      "properties": {
+        "id": 913485885,
+        "name": "GTB Nagar",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0866995,
+          28.5564626
+        ]
+      },
+      "properties": {
+        "id": 927873494,
+        "name": "IGI Airport",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.25909,
+          28.5494785
+        ]
+      },
+      "properties": {
+        "id": 927873510,
+        "name": "Kalkaji Mandir",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1617158,
+          28.5918719
+        ]
+      },
+      "properties": {
+        "id": 927873513,
+        "name": "Dhaula Kuan",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2231116,
+          28.6424786
+        ]
+      },
+      "properties": {
+        "id": 938409545,
+        "name": "New Delhi Airport Express Terminal",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1513605,
+          28.6545409
+        ]
+      },
+      "properties": {
+        "id": 1824659702,
+        "name": "Kirti Nagar (Green Line)",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1577026,
+          28.6620531
+        ]
+      },
+      "properties": {
+        "id": 1824659742,
+        "name": "Satguru Ramsingh Marg",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.115385,
+          28.7149569
+        ]
+      },
+      "properties": {
+        "id": 1988598418,
+        "name": "Rohini West",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0881318,
+          28.4917023
+        ]
+      },
+      "properties": {
+        "id": 1988848864,
+        "name": "Belvedere Towers",
+        "line": "Rapid Metro Gurgaon",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0929909,
+          28.4875596
+        ]
+      },
+      "properties": {
+        "id": 1988848882,
+        "name": "DLF Phase 2",
+        "line": "Rapid Metro Gurgaon",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0944367,
+          28.4809969
+        ]
+      },
+      "properties": {
+        "id": 1988848900,
+        "name": "Sikanderpur RMRG Station",
+        "line": "Rapid Metro Gurgaon",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0946306,
+          28.5007775
+        ]
+      },
+      "properties": {
+        "id": 2533456421,
+        "name": "Moulsari Avenue Station",
+        "line": "Rapid Metro Gurgaon",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.093661,
+          28.4935677
+        ]
+      },
+      "properties": {
+        "id": 2533456422,
+        "name": "Phase 3 Station",
+        "line": "Rapid Metro Gurgaon",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.9785264,
+          28.6119086
+        ]
+      },
+      "properties": {
+        "id": 2579042823,
+        "name": "Dhansa Bus Stand",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2019
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2050447,
+          28.5433691
+        ]
+      },
+      "properties": {
+        "id": 2832938172,
+        "name": "Hauz Khas (Magenta Line)",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1750592,
+          28.5568967
+        ]
+      },
+      "properties": {
+        "id": 2832938185,
+        "name": "Munirka",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2018
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2749004,
+          28.5597477
+        ]
+      },
+      "properties": {
+        "id": 2832938187,
+        "name": "Sukhdev Vihar",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2018
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1611168,
+          28.557827
+        ]
+      },
+      "properties": {
+        "id": 2832938196,
+        "name": "Vasant Vihar",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2018
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1402814,
+          28.5608462
+        ]
+      },
+      "properties": {
+        "id": 2832938301,
+        "name": "Shankar Vihar",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1111279,
+          28.5771145
+        ]
+      },
+      "properties": {
+        "id": 2832938307,
+        "name": "Sadar Bazar Cantonment",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0830764,
+          28.5889102
+        ]
+      },
+      "properties": {
+        "id": 2832938323,
+        "name": "Palam",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2018
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0823751,
+          28.60185
+        ]
+      },
+      "properties": {
+        "id": 2832938324,
+        "name": "Dashrath Puri",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2018
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0779492,
+          28.6289471
+        ]
+      },
+      "properties": {
+        "id": 2832938329,
+        "name": "Janakpuri West",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.321595,
+          28.5529418
+        ]
+      },
+      "properties": {
+        "id": 2833058715,
+        "name": "Okhla Bird Sanctuary",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2018
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2384925,
+          28.5419077
+        ]
+      },
+      "properties": {
+        "id": 2833058716,
+        "name": "Greater Kailash",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2018
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3101107,
+          28.542916
+        ]
+      },
+      "properties": {
+        "id": 2833058718,
+        "name": "Kalindi Kunj",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2018
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2569441,
+          28.5503522
+        ]
+      },
+      "properties": {
+        "id": 2833058719,
+        "name": "Kalkaji Mandir",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.291877,
+          28.5612999
+        ]
+      },
+      "properties": {
+        "id": 2833058720,
+        "name": "Okhla Vihar",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2210916,
+          28.5423747
+        ]
+      },
+      "properties": {
+        "id": 2833058721,
+        "name": "Panchsheel Park",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2018
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1855231,
+          28.5503805
+        ]
+      },
+      "properties": {
+        "id": 2833058722,
+        "name": "R. K. Puram",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2966578,
+          28.5458279
+        ]
+      },
+      "properties": {
+        "id": 2833058723,
+        "name": "Jasola Vihar Shaheen Bagh",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3338373,
+          28.5639051
+        ]
+      },
+      "properties": {
+        "id": 2833058750,
+        "name": "Botanical Garden (Magenta Line)",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1226566,
+          28.564835
+        ]
+      },
+      "properties": {
+        "id": 2833058753,
+        "name": "Terminal 1 IGI Airport",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2018
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3088549,
+          28.613453
+        ]
+      },
+      "properties": {
+        "id": 2833531907,
+        "name": "Trilokpuri Sanjay Lake",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2018
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3158749,
+          28.6468336
+        ]
+      },
+      "properties": {
+        "id": 2833971686,
+        "name": "Anand Vihar (Blue Line)",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3060686,
+          28.6493434
+        ]
+      },
+      "properties": {
+        "id": 2833971689,
+        "name": "Karkarduma (Pink Line)",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1382701,
+          28.7446411
+        ]
+      },
+      "properties": {
+        "id": 2837147019,
+        "name": "Samaypur Badli",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1398526,
+          28.7383795
+        ]
+      },
+      "properties": {
+        "id": 2837147020,
+        "name": "Rohini Sector 18, 19",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1048971,
+          28.4329768
+        ]
+      },
+      "properties": {
+        "id": 3181132316,
+        "name": "Sector 54 Chowk",
+        "line": "Rapid Metro Gurgaon",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1004632,
+          28.4463829
+        ]
+      },
+      "properties": {
+        "id": 3181132336,
+        "name": "Sector 53-54",
+        "line": "Rapid Metro Gurgaon",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0969529,
+          28.4574254
+        ]
+      },
+      "properties": {
+        "id": 3181132346,
+        "name": "Sector 42-43",
+        "line": "Rapid Metro Gurgaon",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2863387,
+          28.5630488
+        ]
+      },
+      "properties": {
+        "id": 3284155408,
+        "name": "Jamia Millia Islamia",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2018
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2303164,
+          28.5411108
+        ]
+      },
+      "properties": {
+        "id": 3832323219,
+        "name": "Chirag Delhi",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2018
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0939606,
+          28.4714258
+        ]
+      },
+      "properties": {
+        "id": 3953773571,
+        "name": "DLF Phase 1",
+        "line": "Rapid Metro Gurgaon",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1051327,
+          28.4233556
+        ]
+      },
+      "properties": {
+        "id": 3953773598,
+        "name": "Sector 55\u201356",
+        "line": "Rapid Metro Gurgaon",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.4223772,
+          28.4942558
+        ]
+      },
+      "properties": {
+        "id": 4165777365,
+        "name": "Noida Sector 143",
+        "line": "Noida Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.4766042,
+          28.4480552
+        ]
+      },
+      "properties": {
+        "id": 4165777372,
+        "name": "Noida Sector 148",
+        "line": "Noida Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.466115,
+          28.4593549
+        ]
+      },
+      "properties": {
+        "id": 4165778709,
+        "name": "Noida Sector 147",
+        "line": "Noida Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.433077,
+          28.4862877
+        ]
+      },
+      "properties": {
+        "id": 4165778734,
+        "name": "Noida Sector 144",
+        "line": "Noida Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3964456,
+          28.5222688
+        ]
+      },
+      "properties": {
+        "id": 4267913896,
+        "name": "Noida Sector 83",
+        "line": "Noida Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.4036068,
+          28.5107689
+        ]
+      },
+      "properties": {
+        "id": 4267913913,
+        "name": "Noida Sector 137",
+        "line": "Noida Metro",
+        "city": "delhi",
+        "opening_year": 2019
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.310718,
+          28.6319032
+        ]
+      },
+      "properties": {
+        "id": 4676900918,
+        "name": "IP Extension",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2018
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2957877,
+          28.6536001
+        ]
+      },
+      "properties": {
+        "id": 4676900919,
+        "name": "Karkarduma Court",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2018
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3054069,
+          28.6200437
+        ]
+      },
+      "properties": {
+        "id": 4676900933,
+        "name": "East Vinod Nagar - Mayur Vihar - II",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2018
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3044525,
+          28.624979
+        ]
+      },
+      "properties": {
+        "id": 4676901224,
+        "name": "Mandawali - West Vinod Nagar",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2018
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.4552077,
+          28.4688192
+        ]
+      },
+      "properties": {
+        "id": 4678434989,
+        "name": "Noida Sector 146",
+        "line": "Noida Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.44241,
+          28.4789957
+        ]
+      },
+      "properties": {
+        "id": 4678434990,
+        "name": "Noida Sector 145",
+        "line": "Noida Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3947544,
+          28.5324041
+        ]
+      },
+      "properties": {
+        "id": 4849443432,
+        "name": "NSEZ",
+        "line": "Noida Metro",
+        "city": "delhi",
+        "opening_year": 2019
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3849489,
+          28.5560481
+        ]
+      },
+      "properties": {
+        "id": 4950920120,
+        "name": "Noida Sector 101",
+        "line": "Noida Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3752593,
+          28.5857189
+        ]
+      },
+      "properties": {
+        "id": 4950923222,
+        "name": "Noida Sector 51",
+        "line": "Noida Metro",
+        "city": "delhi",
+        "opening_year": 2019
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3796581,
+          28.5653305
+        ]
+      },
+      "properties": {
+        "id": 4950923223,
+        "name": "Noida Sector 76",
+        "line": "Noida Metro",
+        "city": "delhi",
+        "opening_year": 2019
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3899489,
+          28.5492993
+        ]
+      },
+      "properties": {
+        "id": 4950923224,
+        "name": "Noida Sector 81",
+        "line": "Noida Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.4065374,
+          28.6734288
+        ]
+      },
+      "properties": {
+        "id": 4951104873,
+        "name": "Hindon River",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2019
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1182795,
+          28.6981
+        ]
+      },
+      "properties": {
+        "id": 5215706475,
+        "name": "Deepali Chowk",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.142467,
+          28.7248993
+        ]
+      },
+      "properties": {
+        "id": 5215706476,
+        "name": "Haiderpur Village",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1300725,
+          28.7035674
+        ]
+      },
+      "properties": {
+        "id": 5215706520,
+        "name": "Madhuban Chowk",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1387306,
+          28.7130743
+        ]
+      },
+      "properties": {
+        "id": 5215706525,
+        "name": "North Pitampura - Prashant Vihar",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.168087,
+          28.7369574
+        ]
+      },
+      "properties": {
+        "id": 5215706542,
+        "name": "Bhalaswa",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1995697,
+          28.7298286
+        ]
+      },
+      "properties": {
+        "id": 5215706767,
+        "name": "Burari",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.223995,
+          28.7211162
+        ]
+      },
+      "properties": {
+        "id": 5215706768,
+        "name": "Jagatpur - Wazirabad",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2544989,
+          28.7052606
+        ]
+      },
+      "properties": {
+        "id": 5215706769,
+        "name": "Khajuri Khas",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2773106,
+          28.7023762
+        ]
+      },
+      "properties": {
+        "id": 5215706770,
+        "name": "Yamuna Vihar",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2626474,
+          28.7035987
+        ]
+      },
+      "properties": {
+        "id": 5215706782,
+        "name": "Bhajanpura",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2274526,
+          28.7102223
+        ]
+      },
+      "properties": {
+        "id": 5215706793,
+        "name": "Soorghat",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1491044,
+          28.7299398
+        ]
+      },
+      "properties": {
+        "id": 5397665618,
+        "name": "Haiderpur Badli Mor",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2122822,
+          28.6158794
+        ]
+      },
+      "properties": {
+        "id": 5453646586,
+        "name": "Central Secretariat",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0494433,
+          28.586443
+        ]
+      },
+      "properties": {
+        "id": 5737168025,
+        "name": "Dwarka Sector 11",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1782756,
+          28.6424955
+        ]
+      },
+      "properties": {
+        "id": 5781445033,
+        "name": "Rajendra Place",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2515057,
+          28.5460584
+        ]
+      },
+      "properties": {
+        "id": 5795235047,
+        "name": "Nehru Enclave",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2018
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2894599,
+          28.721381
+        ]
+      },
+      "properties": {
+        "id": 6049373291,
+        "name": "Shiv Vihar",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2018
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2901293,
+          28.7128806
+        ]
+      },
+      "properties": {
+        "id": 6049373292,
+        "name": "Johri Enclave",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2018
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2861253,
+          28.7024752
+        ]
+      },
+      "properties": {
+        "id": 6049373293,
+        "name": "Gokulpuri",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2018
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2796973,
+          28.6920781
+        ]
+      },
+      "properties": {
+        "id": 6049373294,
+        "name": "Maujpur-Babarpur",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2018
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2748055,
+          28.6826822
+        ]
+      },
+      "properties": {
+        "id": 6049373295,
+        "name": "Jaffrabad",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2018
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2770239,
+          28.6724018
+        ]
+      },
+      "properties": {
+        "id": 6049373296,
+        "name": "Welcome (Pink Line)",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2848431,
+          28.6646764
+        ]
+      },
+      "properties": {
+        "id": 6049373297,
+        "name": "East Azad Nagar",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2018
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2901199,
+          28.6578127
+        ]
+      },
+      "properties": {
+        "id": 6049373298,
+        "name": "Krishna Nagar",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2018
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2022237,
+          28.521168
+        ]
+      },
+      "properties": {
+        "id": 6179179025,
+        "name": "Saket",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1818406,
+          28.724403
+        ]
+      },
+      "properties": {
+        "id": 6196100475,
+        "name": "Majlis Park",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2018
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2492973,
+          28.565871
+        ]
+      },
+      "properties": {
+        "id": 6196100477,
+        "name": "Vinobapuri",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2018
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2909319,
+          28.6036425
+        ]
+      },
+      "properties": {
+        "id": 6196100478,
+        "name": "Mayur Vihar - I (Pink Line)",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2987023,
+          28.6058619
+        ]
+      },
+      "properties": {
+        "id": 6196100479,
+        "name": "Shree Ram Mandir Mayur Vihar",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2572494,
+          28.5887494
+        ]
+      },
+      "properties": {
+        "id": 6196100480,
+        "name": "Sarai Kale Khan - Nizamuddin",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2018
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2585979,
+          28.5724231
+        ]
+      },
+      "properties": {
+        "id": 6196100481,
+        "name": "Ashram",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2018
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3918919,
+          28.676999
+        ]
+      },
+      "properties": {
+        "id": 6397652315,
+        "name": "Arthala",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2019
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3339154,
+          28.6766619
+        ]
+      },
+      "properties": {
+        "id": 6397652316,
+        "name": "Shaheed Nagar",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3840026,
+          28.6785372
+        ]
+      },
+      "properties": {
+        "id": 6397652318,
+        "name": "Mohan Nagar",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2019
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3706454,
+          28.6782281
+        ]
+      },
+      "properties": {
+        "id": 6397652319,
+        "name": "Shyam Park",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2019
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3581426,
+          28.6776112
+        ]
+      },
+      "properties": {
+        "id": 6397652320,
+        "name": "Rajendra Nagar",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3468279,
+          28.6770876
+        ]
+      },
+      "properties": {
+        "id": 6397652321,
+        "name": "Raj Bagh",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2019
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.175741,
+          28.5785326
+        ]
+      },
+      "properties": {
+        "id": 6453544485,
+        "name": "Sir M. Vishweshwaraiah Moti Bagh",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2018
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1878709,
+          28.5702618
+        ]
+      },
+      "properties": {
+        "id": 6453544486,
+        "name": "Bhikaji Cama Place",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2018
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2075857,
+          28.5736524
+        ]
+      },
+      "properties": {
+        "id": 6453544487,
+        "name": "Dilli Haat - INA (Pink Line)",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2385055,
+          28.56958
+        ]
+      },
+      "properties": {
+        "id": 6453544488,
+        "name": "Lajpat Nagar (Pink Line)",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2205677,
+          28.5685664
+        ]
+      },
+      "properties": {
+        "id": 6453544489,
+        "name": "South Extension",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2018
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1297333,
+          28.6371795
+        ]
+      },
+      "properties": {
+        "id": 6453544492,
+        "name": "Mayapuri",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1242597,
+          28.6511896
+        ]
+      },
+      "properties": {
+        "id": 6453992648,
+        "name": "Rajouri Garden (Pink Line)",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1227198,
+          28.6490563
+        ]
+      },
+      "properties": {
+        "id": 6453992649,
+        "name": "Rajouri Garden (Blue Line)",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1542607,
+          28.6947146
+        ]
+      },
+      "properties": {
+        "id": 6453992650,
+        "name": "Netaji Subhash Place (Pink Line)",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1819488,
+          28.7057821
+        ]
+      },
+      "properties": {
+        "id": 6453992651,
+        "name": "Azadpur (Pink Line)",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1803722,
+          28.7070448
+        ]
+      },
+      "properties": {
+        "id": 6453992652,
+        "name": "Azadpur (Yellow Line)",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2093017,
+          28.5741769
+        ]
+      },
+      "properties": {
+        "id": 6453992653,
+        "name": "Dilli Haat - INA (Yellow Line)",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2364011,
+          28.5705968
+        ]
+      },
+      "properties": {
+        "id": 6453992654,
+        "name": "Lajpat Nagar (Violet Line)",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3155317,
+          28.6466157
+        ]
+      },
+      "properties": {
+        "id": 6454015469,
+        "name": "Anand Vihar (Pink Line)",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3055178,
+          28.6483176
+        ]
+      },
+      "properties": {
+        "id": 6458130120,
+        "name": "Karkarduma (Blue Line)",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1404187,
+          28.6086201
+        ]
+      },
+      "properties": {
+        "id": 6458165644,
+        "name": "Delhi Cantt",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2018
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1654317,
+          28.7019574
+        ]
+      },
+      "properties": {
+        "id": 6458202840,
+        "name": "Shalimar Bagh",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2018
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1496094,
+          28.6857668
+        ]
+      },
+      "properties": {
+        "id": 6458202841,
+        "name": "Shakurpur",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2018
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1980786,
+          28.575817
+        ]
+      },
+      "properties": {
+        "id": 6458202842,
+        "name": "Sarojini Nagar",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2018
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1391976,
+          28.6727671
+        ]
+      },
+      "properties": {
+        "id": 6458202843,
+        "name": "Punjabi Bagh West",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2018
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1364438,
+          28.6243852
+        ]
+      },
+      "properties": {
+        "id": 6458202844,
+        "name": "Naraina Vihar",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2018
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1272678,
+          28.6580737
+        ]
+      },
+      "properties": {
+        "id": 6458202845,
+        "name": "ESI - Basaidarapur",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2018
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1691872,
+          28.6727066
+        ]
+      },
+      "properties": {
+        "id": 6465991434,
+        "name": "Inderlok (Green Line)",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.155291,
+          28.6716045
+        ]
+      },
+      "properties": {
+        "id": 6465991435,
+        "name": "Ashok Park Main",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1461239,
+          28.672995
+        ]
+      },
+      "properties": {
+        "id": 6465991436,
+        "name": "Punjabi Bagh",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1304722,
+          28.6750317
+        ]
+      },
+      "properties": {
+        "id": 6465991437,
+        "name": "Shivaji Park",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1193599,
+          28.6764752
+        ]
+      },
+      "properties": {
+        "id": 6465991438,
+        "name": "Madipur",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1122823,
+          28.6773563
+        ]
+      },
+      "properties": {
+        "id": 6465991439,
+        "name": "Paschim Vihar East",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0926793,
+          28.6798074
+        ]
+      },
+      "properties": {
+        "id": 6465991441,
+        "name": "Peera Garhi",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0808492,
+          28.681103
+        ]
+      },
+      "properties": {
+        "id": 6465991442,
+        "name": "Udyog Nagar",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.074,
+          28.6818775
+        ]
+      },
+      "properties": {
+        "id": 6465991443,
+        "name": "Surajmal Stadium",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0647319,
+          28.6824007
+        ]
+      },
+      "properties": {
+        "id": 6465991444,
+        "name": "Nangloi",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0562463,
+          28.6822009
+        ]
+      },
+      "properties": {
+        "id": 6465991445,
+        "name": "Nangloi Railway Station",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0439437,
+          28.6823085
+        ]
+      },
+      "properties": {
+        "id": 6465991446,
+        "name": "Rajdhani Park",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0305741,
+          28.6824341
+        ]
+      },
+      "properties": {
+        "id": 6465991447,
+        "name": "Mundka",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0171485,
+          28.6833701
+        ]
+      },
+      "properties": {
+        "id": 6465991448,
+        "name": "Mundka Industrial Area",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2018
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.9961591,
+          28.6852384
+        ]
+      },
+      "properties": {
+        "id": 6465991449,
+        "name": "Ghevra",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2018
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.9772082,
+          28.6868849
+        ]
+      },
+      "properties": {
+        "id": 6465991450,
+        "name": "Tikri Kalan",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2018
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.9640828,
+          28.6880254
+        ]
+      },
+      "properties": {
+        "id": 6465991451,
+        "name": "Tikri Border",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2018
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.9511988,
+          28.689281
+        ]
+      },
+      "properties": {
+        "id": 6465991452,
+        "name": "Pandit Shree Ram Sharma",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2018
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.9354807,
+          28.6907783
+        ]
+      },
+      "properties": {
+        "id": 6465991453,
+        "name": "Bahadurgarh City",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2018
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.9192027,
+          28.6974603
+        ]
+      },
+      "properties": {
+        "id": 6465991454,
+        "name": "Brigadier Hoshiyar Singh",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1945546,
+          28.5470121
+        ]
+      },
+      "properties": {
+        "id": 6485904396,
+        "name": "IIT Delhi",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2018
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.249551,
+          28.6206019
+        ]
+      },
+      "properties": {
+        "id": 6537193575,
+        "name": "Indraprastha",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.268013,
+          28.6233124
+        ]
+      },
+      "properties": {
+        "id": 6537193576,
+        "name": "Yamuna Bank",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3015085,
+          28.5890885
+        ]
+      },
+      "properties": {
+        "id": 6537196022,
+        "name": "New Ashok Nagar",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3561638,
+          28.5747334
+        ]
+      },
+      "properties": {
+        "id": 6537260850,
+        "name": "Noida City Centre",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3463247,
+          28.5673755
+        ]
+      },
+      "properties": {
+        "id": 6537268384,
+        "name": "Noida Golf Course",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3343995,
+          28.5639434
+        ]
+      },
+      "properties": {
+        "id": 6537285485,
+        "name": "Botanical Garden (Blue Line)",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3260756,
+          28.5707583
+        ]
+      },
+      "properties": {
+        "id": 6537285486,
+        "name": "Noida Sector 18",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3177778,
+          28.578081
+        ]
+      },
+      "properties": {
+        "id": 6537285487,
+        "name": "Noida Sector 16",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3116118,
+          28.5848835
+        ]
+      },
+      "properties": {
+        "id": 6537285488,
+        "name": "Noida Sector 15",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2895398,
+          28.604064
+        ]
+      },
+      "properties": {
+        "id": 6539745133,
+        "name": "Mayur Vihar - I (Blue Line)",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0407315,
+          28.5922362
+        ]
+      },
+      "properties": {
+        "id": 6539894848,
+        "name": "Dwarka Sector 12",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1999165,
+          28.6443188
+        ]
+      },
+      "properties": {
+        "id": 6539894849,
+        "name": "Jhandewalan",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2085787,
+          28.6392436
+        ]
+      },
+      "properties": {
+        "id": 6539894850,
+        "name": "Ramakrishna Ashram Marg",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2018
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2193123,
+          28.6327062
+        ]
+      },
+      "properties": {
+        "id": 6539894851,
+        "name": "Rajiv Chowk",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2250046,
+          28.6297676
+        ]
+      },
+      "properties": {
+        "id": 6539894855,
+        "name": "Barakhambha Road",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2341966,
+          28.6256122
+        ]
+      },
+      "properties": {
+        "id": 6539894856,
+        "name": "Mandi House",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2425278,
+          28.6234752
+        ]
+      },
+      "properties": {
+        "id": 6539894857,
+        "name": "Supreme Court",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0574996,
+          28.5810577
+        ]
+      },
+      "properties": {
+        "id": 6539894859,
+        "name": "Dwarka Sector 10",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0653316,
+          28.574272
+        ]
+      },
+      "properties": {
+        "id": 6539894860,
+        "name": "Dwarka Sector 9",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0670366,
+          28.5656109
+        ]
+      },
+      "properties": {
+        "id": 6539894861,
+        "name": "Dwarka Sector 8",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0585605,
+          28.5519218
+        ]
+      },
+      "properties": {
+        "id": 6539894862,
+        "name": "Dwarka Sector 21",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3735885,
+          28.6169861
+        ]
+      },
+      "properties": {
+        "id": 6539894863,
+        "name": "Noida Sector 62",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2019
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3726828,
+          28.6065279
+        ]
+      },
+      "properties": {
+        "id": 6539894864,
+        "name": "Noida Sector 59",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2019
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3722663,
+          28.5975854
+        ]
+      },
+      "properties": {
+        "id": 6539894865,
+        "name": "Noida Sector 61",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2019
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3730237,
+          28.5868739
+        ]
+      },
+      "properties": {
+        "id": 6539894866,
+        "name": "Noida Sector 52",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2019
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3634917,
+          28.5802538
+        ]
+      },
+      "properties": {
+        "id": 6539894867,
+        "name": "Noida Sector 34",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2019
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3750033,
+          28.6282627
+        ]
+      },
+      "properties": {
+        "id": 6539894868,
+        "name": "Noida Electronic City",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2019
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.078085,
+          28.6295839
+        ]
+      },
+      "properties": {
+        "id": 6541854249,
+        "name": "Janakpuri West",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0652861,
+          28.6248465
+        ]
+      },
+      "properties": {
+        "id": 6541854250,
+        "name": "Uttam Nagar East",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0557122,
+          28.621757
+        ]
+      },
+      "properties": {
+        "id": 6541854251,
+        "name": "Uttam Nagar West",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0450787,
+          28.6202758
+        ]
+      },
+      "properties": {
+        "id": 6541854252,
+        "name": "Nawada",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0332792,
+          28.61931
+        ]
+      },
+      "properties": {
+        "id": 6541854253,
+        "name": "Dwarka Mor",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0224342,
+          28.6158874
+        ]
+      },
+      "properties": {
+        "id": 6541854254,
+        "name": "Dwarka - Kakrola (Grey Line)",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0227628,
+          28.6149362
+        ]
+      },
+      "properties": {
+        "id": 6541854255,
+        "name": "Dwarka - Kakrola (Blue Line)",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0259765,
+          28.6022218
+        ]
+      },
+      "properties": {
+        "id": 6541854256,
+        "name": "Dwarka Sector 14",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0335407,
+          28.597009
+        ]
+      },
+      "properties": {
+        "id": 6541854257,
+        "name": "Dwarka Sector 13",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1704223,
+          28.7165805
+        ]
+      },
+      "properties": {
+        "id": 6547772109,
+        "name": "Adarsh Nagar",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.162658,
+          28.7259717
+        ]
+      },
+      "properties": {
+        "id": 6547772110,
+        "name": "Jahangirpuri",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.086757,
+          28.633021
+        ]
+      },
+      "properties": {
+        "id": 6548798518,
+        "name": "Janakpuri East",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0964961,
+          28.6365482
+        ]
+      },
+      "properties": {
+        "id": 6548798519,
+        "name": "Tilak Nagar",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1051815,
+          28.6404593
+        ]
+      },
+      "properties": {
+        "id": 6548798520,
+        "name": "Subhash Nagar",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.11282,
+          28.6437265
+        ]
+      },
+      "properties": {
+        "id": 6548798521,
+        "name": "Tagore Garden",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1022685,
+          28.4820212
+        ]
+      },
+      "properties": {
+        "id": 7018301879,
+        "name": "Guru Dronacharya",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1939912,
+          28.7027136
+        ]
+      },
+      "properties": {
+        "id": 7018301880,
+        "name": "Model Town",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0798926,
+          28.4795543
+        ]
+      },
+      "properties": {
+        "id": 7018301881,
+        "name": "M G Road",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0724222,
+          28.4723277
+        ]
+      },
+      "properties": {
+        "id": 7018301882,
+        "name": "IFFCO Chowk",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2078058,
+          28.5668602
+        ]
+      },
+      "properties": {
+        "id": 7018301883,
+        "name": "A.I.I.M.S.",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2067933,
+          28.5580071
+        ]
+      },
+      "properties": {
+        "id": 7018316585,
+        "name": "Green Park",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2250299,
+          28.6768508
+        ]
+      },
+      "properties": {
+        "id": 7018316586,
+        "name": "Civil Lines",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2217271,
+          28.6863222
+        ]
+      },
+      "properties": {
+        "id": 7018316587,
+        "name": "Vidhan Sabha",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2147459,
+          28.6950772
+        ]
+      },
+      "properties": {
+        "id": 7018316588,
+        "name": "Vishwa Vidyalaya",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0726571,
+          28.4593429
+        ]
+      },
+      "properties": {
+        "id": 7018316590,
+        "name": "Millennium City Centre Gurugram",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2048241,
+          28.5290656
+        ]
+      },
+      "properties": {
+        "id": 7018316591,
+        "name": "Malviya Nagar",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1750019,
+          28.5067242
+        ]
+      },
+      "properties": {
+        "id": 7018316592,
+        "name": "Chhatarpur",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1613745,
+          28.4991235
+        ]
+      },
+      "properties": {
+        "id": 7018711118,
+        "name": "Sultanpur",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2303375,
+          28.6584227
+        ]
+      },
+      "properties": {
+        "id": 7018886724,
+        "name": "Chandni Chowk",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2265153,
+          28.6492649
+        ]
+      },
+      "properties": {
+        "id": 7018886725,
+        "name": "Chawri Bazaar",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.214031,
+          28.6229664
+        ]
+      },
+      "properties": {
+        "id": 7018886726,
+        "name": "Patel Chowk",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.211796,
+          28.6095136
+        ]
+      },
+      "properties": {
+        "id": 7018886727,
+        "name": "Seva Teerth",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2110967,
+          28.5973513
+        ]
+      },
+      "properties": {
+        "id": 7018886728,
+        "name": "Lok Kalyan Marg",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2125273,
+          28.5865094
+        ]
+      },
+      "properties": {
+        "id": 7018886729,
+        "name": "Jor Bagh",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1864532,
+          28.512951
+        ]
+      },
+      "properties": {
+        "id": 7018886730,
+        "name": "Qutab Minar",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1491866,
+          28.493751
+        ]
+      },
+      "properties": {
+        "id": 7018886731,
+        "name": "Ghitorni",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1257622,
+          28.4807352
+        ]
+      },
+      "properties": {
+        "id": 7018886732,
+        "name": "Arjan Garh",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0104375,
+          28.6173003
+        ]
+      },
+      "properties": {
+        "id": 7039532905,
+        "name": "Nangli",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2517386,
+          28.5514171
+        ]
+      },
+      "properties": {
+        "id": 7267374894,
+        "name": "Nehru Place",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2419637,
+          28.5553298
+        ]
+      },
+      "properties": {
+        "id": 7267374895,
+        "name": "Kailash Colony",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2366607,
+          28.657483
+        ]
+      },
+      "properties": {
+        "id": 7282286730,
+        "name": "Lal Quila",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2291281,
+          28.6022446
+        ]
+      },
+      "properties": {
+        "id": 7282286731,
+        "name": "Khan Market",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2407795,
+          28.6392174
+        ]
+      },
+      "properties": {
+        "id": 7282286733,
+        "name": "Delhi Gate",
+        "line": "Violet Line",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2196985,
+          28.6327786
+        ]
+      },
+      "properties": {
+        "id": 8018558072,
+        "name": "Rajiv Chowk",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1022154,
+          28.6786018
+        ]
+      },
+      "properties": {
+        "id": 9066465094,
+        "name": "Paschim Vihar West",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.4154736,
+          28.6706449
+        ]
+      },
+      "properties": {
+        "id": 9144051094,
+        "name": "Shaheed Sthal",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2019
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.9865067,
+          28.6124504
+        ]
+      },
+      "properties": {
+        "id": 9172459622,
+        "name": "Najafgarh",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2019
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.277523,
+          28.6305974
+        ]
+      },
+      "properties": {
+        "id": 9415047898,
+        "name": "Laxmi Nagar",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2952819,
+          28.6414176
+        ]
+      },
+      "properties": {
+        "id": 9415047899,
+        "name": "Preet Vihar",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3103481,
+          28.4227134
+        ]
+      },
+      "properties": {
+        "id": 9552724758,
+        "name": "Badhkal Mor",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3164509,
+          28.340002
+        ]
+      },
+      "properties": {
+        "id": 9565595809,
+        "name": "Raja Nahar Singh",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2018
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2342555,
+          28.5644044
+        ]
+      },
+      "properties": {
+        "id": 9584236504,
+        "name": "Moolchand",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2393151,
+          28.5830386
+        ]
+      },
+      "properties": {
+        "id": 9584236505,
+        "name": "Jangpura",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2337833,
+          28.5882347
+        ]
+      },
+      "properties": {
+        "id": 9584236506,
+        "name": "Jawaharlal Nehru Stadium",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2192587,
+          28.6240485
+        ]
+      },
+      "properties": {
+        "id": 9584236507,
+        "name": "Janpath",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2410437,
+          28.6281909
+        ]
+      },
+      "properties": {
+        "id": 9584236508,
+        "name": "ITO",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2642761,
+          28.5445521
+        ]
+      },
+      "properties": {
+        "id": 9597709830,
+        "name": "Govind Puri",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2750407,
+          28.5429338
+        ]
+      },
+      "properties": {
+        "id": 9597709831,
+        "name": "Harkesh Nagar Okhla",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2341926,
+          28.6255149
+        ]
+      },
+      "properties": {
+        "id": 9920295123,
+        "name": "Mandi House",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0851893,
+          28.61572
+        ]
+      },
+      "properties": {
+        "id": 9936590366,
+        "name": "Dabri Mor - Janakpuri South",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2018
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3782348,
+          28.5743583
+        ]
+      },
+      "properties": {
+        "id": 10074648933,
+        "name": "Rainbow Metro Station",
+        "line": "Noida Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2868145,
+          28.6364592
+        ]
+      },
+      "properties": {
+        "id": 10314380321,
+        "name": "Nirman Vihar",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.339575,
+          28.6496701
+        ]
+      },
+      "properties": {
+        "id": 10314380322,
+        "name": "Vaishali",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3243429,
+          28.6452857
+        ]
+      },
+      "properties": {
+        "id": 10314380323,
+        "name": "Kaushambi",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3008678,
+          28.675385
+        ]
+      },
+      "properties": {
+        "id": 10922685709,
+        "name": "Mansarovar Park",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.228051,
+          28.6686728
+        ]
+      },
+      "properties": {
+        "id": 11174317216,
+        "name": "Kashmere Gate",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0453073,
+          28.5508323
+        ]
+      },
+      "properties": {
+        "id": 11203142798,
+        "name": "Yashobhoomi Dwarka Sector 25",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2023
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.4676413,
+          28.7422822
+        ]
+      },
+      "properties": {
+        "id": 11293126096,
+        "name": "Duhai Depot Station",
+        "line": "RapidX",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.4714071,
+          28.7270172
+        ]
+      },
+      "properties": {
+        "id": 11293126097,
+        "name": "Duhai",
+        "line": "RapidX",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.4137315,
+          28.6725546
+        ]
+      },
+      "properties": {
+        "id": 11293189742,
+        "name": "Ghaziabad",
+        "line": "RapidX",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.4457502,
+          28.6995434
+        ]
+      },
+      "properties": {
+        "id": 11294005967,
+        "name": "Guldhar",
+        "line": "RapidX",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0843425,
+          28.6477917
+        ]
+      },
+      "properties": {
+        "id": 12149316873,
+        "name": "Krishna Park Extension",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.0892567,
+          28.4980703
+        ]
+      },
+      "properties": {
+        "id": 13289640468,
+        "name": "Cyber City",
+        "line": "Rapid Metro Gurgaon",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3832359,
+          28.6007345
+        ]
+      },
+      "properties": {
+        "id": 13450364921,
+        "name": "Noida Sector 70",
+        "line": "Aqua Line",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3724805,
+          28.5975718
+        ]
+      },
+      "properties": {
+        "id": 13450364928,
+        "name": "Noida Sector 61",
+        "line": "Aqua Line",
+        "city": "delhi",
+        "opening_year": 2019
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3352465,
+          28.5512763
+        ]
+      },
+      "properties": {
+        "id": 13451058326,
+        "name": "Noida Sector 44",
+        "line": "Aqua Line",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.3377141,
+          28.5453808
+        ]
+      },
+      "properties": {
+        "id": 13451058327,
+        "name": "Noida Office",
+        "line": "Aqua Line",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2425095,
+          28.7087185
+        ]
+      },
+      "properties": {
+        "id": 13628489714,
+        "name": "Nanaksar - Sonia Vihar",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2137118,
+          28.7249649
+        ]
+      },
+      "properties": {
+        "id": 13628489720,
+        "name": "Jharoda Majra",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1649348,
+          28.7022144
+        ]
+      },
+      "properties": {
+        "id": 13821961795,
+        "name": "Shalimar Bagh Metro Station",
+        "line": "Pink Line",
+        "city": "delhi",
+        "opening_year": 2018
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2946029,
+          28.5195804
+        ]
+      },
+      "properties": {
+        "id": 13860634717,
+        "name": "Mohan Estate",
+        "line": "Delhi Metro",
+        "city": "delhi",
+        "opening_year": 2015
+      }
+    }
+  ]
+}

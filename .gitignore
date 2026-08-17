@@ -4,8 +4,9 @@ env/
 .env
 
 # Data and Artifacts
-data/
+data/geotiffs/
 *.tif
+*.tiff
 *.crdownload
 test.png
 *.tar.gz
