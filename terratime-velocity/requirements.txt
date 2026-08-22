@@ -1,0 +1,24 @@
+# TerraTime Pillar 1 — Velocity Engine
+# Core
+numpy
+pandas
+scipy
+pyarrow
+scikit-learn
+pyyaml
+
+# Geo
+h3>=4.1
+shapely
+geopandas
+rasterio
+
+# CLI / reporting
+typer
+matplotlib
+
+# Optional — only needed for the real EarthEngineSource path (M2)
+earthengine-api
+
+# Dev / test
+pytest

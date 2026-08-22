@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TerraTime — Growth Velocity Engine</title>
+<link rel="stylesheet" href="vendor/maplibre-gl.css">
+<style>
+  :root {
+    --bg: #0d1117;
+    --panel-bg: rgba(22, 27, 34, 0.92);
+    --panel-border: rgba(255, 255, 255, 0.08);
+    --text: #e6edf3;
+    --text-dim: #8b949e;
+    --accent: #58a6ff;
+    --good: #3fb950;
+    --warn: #d29922;
+    --bad: #f85149;
+    --radius: 10px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; height: 100%; background: var(--bg); font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: var(--text); }
+  #map { position: absolute; inset: 0; }
+
+  .panel {
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-border);
+    border-radius: var(--radius);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  }
+
+  #topbar {
+    position: absolute; top: 14px; left: 14px; right: 14px;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 16px; z-index: 10;
+  }
+  #topbar h1 { font-size: 16px; margin: 0; font-weight: 600; letter-spacing: 0.2px; }
+  #topbar .sub { font-size: 11px; color: var(--text-dim); margin-top: 2px; }
+  #provenance-badge {
+    font-size: 11px; font-weight: 700; padding: 5px 12px; border-radius: 999px;
+    letter-spacing: 0.4px; text-transform: uppercase;
+  }
+  #provenance-badge.simulated { background: rgba(210, 153, 34, 0.18); color: var(--warn); border: 1px solid rgba(210,153,34,0.4); }
+  #provenance-badge.live { background: rgba(63, 185, 80, 0.18); color: var(--good); border: 1px solid rgba(63,185,80,0.4); }
+
+  #controls {
+    position: absolute; top: 74px; left: 14px; width: 240px;
+    padding: 14px; z-index: 9; max-height: calc(100vh - 100px); overflow-y: auto;
+  }
+  #controls h2 { font-size: 11px; text-transform: uppercase; letter-spacing: 0.6px; color: var(--text-dim); margin: 14px 0 8px; }
+  #controls h2:first-child { margin-top: 0; }
+  .layer-option { display: flex; align-items: center; gap: 8px; padding: 5px 0; font-size: 13px; cursor: pointer; }
+  .layer-option input { accent-color: var(--accent); }
+  .tier-option { display: flex; align-items: center; gap: 8px; padding: 4px 0; font-size: 12.5px; cursor: pointer; }
+  .tier-option input { accent-color: var(--accent); }
+  #legend { font-size: 11px; }
+  #legend-gradient { height: 10px; border-radius: 4px; margin: 6px 0 4px; }
+  #legend-labels { display: flex; justify-content: space-between; color: var(--text-dim); }
+  #legend-categorical .cat-row { display: flex; align-items: center; gap: 6px; margin: 3px 0; }
+  #legend-categorical .swatch { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
+
+  #sidepanel {
+    position: absolute; top: 14px; right: 14px; bottom: 14px; width: 360px;
+    padding: 18px; z-index: 9; overflow-y: auto; display: none;
+  }
+  #sidepanel.open { display: block; }
+  #sidepanel .close-btn { position: absolute; top: 14px; right: 14px; cursor: pointer; color: var(--text-dim); font-size: 18px; background: none; border: none; }
+  #sidepanel h2 { font-size: 15px; margin: 0 0 2px; padding-right: 24px; }
+  #sidepanel .hexid { font-size: 11px; color: var(--text-dim); font-family: monospace; margin-bottom: 10px; }
+  .badge { display: inline-block; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 999px; margin-right: 6px; margin-bottom: 10px; }
+  .badge.tier1 { background: rgba(63,185,80,0.18); color: var(--good); }
+  .badge.tier2 { background: rgba(210,153,34,0.18); color: var(--warn); }
+  .badge.tier3, .badge.insufficient_signal { background: rgba(248,81,73,0.18); color: var(--bad); }
+  .badge.saturated_static, .badge.undeveloped { background: rgba(139,148,158,0.18); color: var(--text-dim); }
+  .badge.Undeveloped { background: rgba(75,85,99,0.22); color: #9ca3af; }
+  .badge.Emerging { background: rgba(56,189,248,0.18); color: #38bdf8; }
+  .badge.Accelerating { background: rgba(245,158,11,0.18); color: #f59e0b; }
+  .badge.Maturing { background: rgba(168,85,247,0.18); color: #a855f7; }
+  .badge.Saturated { background: rgba(22,163,74,0.18); color: #16a34a; }
+  .metric-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 12px; font-size: 12.5px; margin: 10px 0 16px; }
+  .metric-grid .k { color: var(--text-dim); }
+  .metric-grid .v { text-align: right; font-variant-numeric: tabular-nums; }
+  .chart-wrap { margin-bottom: 14px; }
+  .chart-wrap .chart-label { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+  canvas { max-width: 100%; }
+  .note { font-size: 11.5px; color: var(--text-dim); font-style: italic; margin-top: -6px; margin-bottom: 12px; }
+
+  #top10panel {
+    position: absolute; bottom: 14px; left: 14px; width: 340px;
+    padding: 12px 16px; z-index: 9; max-height: 46vh; overflow-y: auto;
+  }
+  #top10panel h2 { font-size: 11px; text-transform: uppercase; letter-spacing: 0.6px; color: var(--text-dim); margin: 0 0 8px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
+  #top10panel table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  #top10panel th, #top10panel td { text-align: left; padding: 4px 6px; }
+  #top10panel th { color: var(--text-dim); font-weight: 500; font-size: 10.5px; }
+  #top10panel tbody tr { cursor: pointer; border-top: 1px solid var(--panel-border); }
+  #top10panel tbody tr:hover { background: rgba(88,166,255,0.1); }
+  #top10-body.collapsed { display: none; }
+
+  #placeholder-hint {
+    position: absolute; top: 14px; right: 14px; padding: 14px 18px; z-index: 8;
+    font-size: 12.5px; color: var(--text-dim); max-width: 220px;
+  }
+
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 4px; }
+</style>
+</head>
+<body>
+
+<div id="map"></div>
+
+<div id="topbar" class="panel">
+  <div>
+    <h1>TerraTime — Growth Velocity Engine</h1>
+    <div class="sub">NCT Delhi &middot; H3 res-9 &middot; Pillar 1</div>
+  </div>
+  <div id="provenance-badge">loading...</div>
+</div>
+
+<div id="controls" class="panel">
+  <h2>Layer</h2>
+  <label class="layer-option"><input type="radio" name="layer" value="velocity_2026" checked> Velocity</label>
+  <label class="layer-option"><input type="radio" name="layer" value="acceleration_2026"> Acceleration</label>
+  <label class="layer-option"><input type="radio" name="layer" value="lifecycle"> Lifecycle stage</label>
+  <label class="layer-option"><input type="radio" name="layer" value="confidence"> Confidence</label>
+  <label class="layer-option"><input type="radio" name="layer" value="t0"> Inflection year (t0)</label>
+
+  <h2>Tier filter</h2>
+  <div id="tier-filters"></div>
+
+  <h2>Legend</h2>
+  <div id="legend"></div>
+</div>
+
+<div id="placeholder-hint" class="panel">Click a hexagon to see its fitted growth curve and metrics.</div>
+
+<div id="sidepanel" class="panel">
+  <button class="close-btn" id="sidepanel-close">&times;</button>
+  <div id="sidepanel-content"></div>
+</div>
+
+<div id="top10panel" class="panel">
+  <h2 id="top10-toggle">Top 10 fastest-accelerating cells <span id="top10-caret">&#9662;</span></h2>
+  <div id="top10-body">
+    <table>
+      <thead><tr><th>Cell</th><th>Accel.</th><th>Lifecycle</th></tr></thead>
+      <tbody id="top10-rows"></tbody>
+    </table>
+  </div>
+</div>
+
+<script src="vendor/maplibre-gl.js"></script>
+<script src="vendor/chart.umd.js"></script>
+<script src="data/hexes.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

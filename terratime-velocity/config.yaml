@@ -1,0 +1,54 @@
+# TerraTime — Pillar 1 (Velocity Engine) configuration
+# Swapping `source.kind` between synthetic/earthengine is the only change needed
+# to switch data sources — see src/terratime/sources/base.py.
+
+data:
+  raw_dir: data/raw
+  interim_dir: data/interim
+  processed_dir: data/processed
+  observations_file: data/interim/observations.parquet
+  hex_metrics_file: data/processed/hex_metrics.parquet
+  hexes_geojson_file: data/processed/hexes.geojson
+
+grid:
+  h3_resolution: 9
+
+time:
+  year_start: 2016
+  year_end: 2025
+  t_eval: 2026.0
+
+source:
+  kind: synthetic          # synthetic | earthengine
+  synthetic:
+    n_hexes: null          # null = use the full NCT Delhi grid
+    seed: 42
+    noise_sigma: 0.02
+    classifier_flip_prob: 0.12
+    classifier_flip_magnitude: 0.08
+  earthengine:
+    observations_file: data/interim/observations.parquet
+
+fitting:
+  isotonic: true
+  r_lower: 0.01
+  r_upper: 3.0
+  t0_window_pad_years: 15   # t0 bounds = [t_start - pad, t_end + pad]
+
+tiering:
+  undeveloped_max_f: 0.02
+  saturated_first_f: 0.85
+  saturated_range: 0.03
+  tier1_r2: 0.85
+  tier1_t0_pre_years: 2     # t0 window lower pad for Tier-1 acceptance
+  tier1_t0_post_years: 7    # t0 window upper pad for Tier-1 acceptance
+  tier1_max_rel_stderr_r: 0.5
+  tier2_r2: 0.60
+
+validation:
+  recovery_n_hexes: 2000
+  recovery_noise_levels: [0.01, 0.02, 0.05]
+  recovery_flip_prob: 0.15
+  recovery_flip_magnitude: 0.08
+  recovery_seed: 7
+  loyo_max_hexes: 500       # null = all Tier-1 hexes (slower, more thorough)
